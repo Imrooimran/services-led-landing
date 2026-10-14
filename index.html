@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services Led - Rocketlane Leaders Collection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="data.js"></script>
+    <script src="tracking.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --rl-blue: #1E5AB8;
+            --rl-blue-dark: #0A2540;
+            --rl-blue-light: #3B7FDF;
+            --rl-purple: #7C3AED;
+            --rl-accent: #FF6B35;
+            --rl-success: #10B981;
+            --rl-gray-950: #0F172A;
+            --rl-gray-50: #F8FAFC;
+            --rl-gray-100: #F1F5F9;
+            --rl-gray-200: #E2E8F0;
+            --rl-gray-400: #94A3B8;
+            --rl-gray-600: #475569;
+            --text-dark: #0F172A;
+            --text-light: #64748B;
+        }
+
+        body {
+            font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--rl-gray-50);
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--rl-blue-dark) 0%, var(--rl-blue) 100%);
+            background-image: url('./vegas-hero.png');
+            background-size: cover;
+            background-position: right 85%;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: white;
+            padding: 100px 20px;
+            margin-bottom: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: transparent;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(59, 127, 223, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            margin-bottom: 50px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 140px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            display: none;
+        }
+
+        h1 {
+            font-size: 4.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            letter-spacing: -0.8px;
+            font-family: 'Geist', sans-serif;
+            background: linear-gradient(120deg, #FFFFFF 0%, #E8F0FE 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.15rem;
+            opacity: 0.92;
+            max-width: 700px;
+            font-weight: 350;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        /* Stats */
+        .stats-row {
+            display: flex;
+            gap: 70px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .stat-number {
+            font-size: 2.6rem;
+            font-weight: 600;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        /* Controls Section */
+        .controls-section {
+            background: white;
+            padding: 60px 20px;
+            margin-bottom: 80px;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--rl-gray-200);
+        }
+
+        .controls {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .controls-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 32px;
+            color: var(--text-dark);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: 'Geist', sans-serif;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 550px;
+            padding: 16px 22px;
+            border: 2px solid var(--rl-gray-200);
+            border-radius: 12px;
+            font-size: 1rem;
+            margin-bottom: 40px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            background: var(--rl-gray-50);
+            font-family: 'Geist', sans-serif;
+            font-weight: 500;
+        }
+
+        .search-box::placeholder {
+            color: var(--rl-gray-400);
+            font-weight: 500;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--rl-blue);
+            background: white;
+            box-shadow: 0 0 0 5px rgba(30, 90, 184, 0.1);
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 12px 28px;
+            border: 2px solid var(--rl-gray-200);
+            background: white;
+            color: var(--text-dark);
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            font-family: 'Geist', sans-serif;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--rl-blue);
+            color: var(--rl-blue);
+            background: rgba(30, 90, 184, 0.04);
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--rl-blue) 0%, var(--rl-blue-light) 100%);
+            border-color: var(--rl-blue);
+            color: white;
+            box-shadow: 0 8px 24px rgba(30, 90, 184, 0.35);
+        }
+
+        /* Grid */
+        .leaders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        /* Card */
+        .leader-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid var(--rl-gray-200);
+            position: relative;
+        }
+
+        .leader-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 24px 48px rgba(30, 90, 184, 0.25);
+        }
+
+        .leader-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 24px 48px rgba(30, 90, 184, 0.25);
+        }
+
+        .card-image-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .book-mockup-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            filter: drop-shadow(15px 20px 40px rgba(0, 0, 0, 0.2))
+                    drop-shadow(8px 10px 20px rgba(0, 0, 0, 0.1));
+        }
+
+        .leader-card:hover .book-mockup-card {
+            transform: scale(1.05);
+            filter: drop-shadow(18px 24px 48px rgba(0, 0, 0, 0.25))
+                    drop-shadow(10px 12px 24px rgba(0, 0, 0, 0.15));
+        }
+
+        .book-mockup-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .book-spine-card {
+            display: block !important;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 14px;
+            height: 100%;
+            background: linear-gradient(90deg, #1a1a1a 0%, #2d2d2d 50%, #1f1f1f 100%);
+            transform: rotateY(90deg);
+            transform-origin: left center;
+            transform-style: preserve-3d;
+            z-index: 0;
+            border-radius: 1px 0 0 1px;
+        }
+
+        .book-front-card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 2;
+            border-radius: 2px 6px 6px 2px;
+            overflow: hidden;
+            box-shadow: inset -8px 0 16px rgba(0, 0, 0, 0.1),
+                        -2px 0 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-front-card::before {
+            content: '';
+            position: absolute;
+            right: -12px;
+            top: 0;
+            width: 12px;
+            height: 100%;
+            background: linear-gradient(90deg, #f5f5f5 0%, #e8e8e8 100%);
+            transform: rotateY(-80deg);
+            transform-origin: right center;
+            transform-style: preserve-3d;
+            box-shadow: inset 2px 0 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-front-card::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: 1px;
+            width: 8px;
+            height: 100%;
+            background: linear-gradient(90deg, #efefef 0%, #d8d8d0 100%);
+            z-index: -1;
+            box-shadow: inset -1px 0 2px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 3px;
+        }
+
+        .book-spine-card {
+            display: none;
+        }
+
+        .card-tier-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .card-content {
+            padding: 16px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+        }
+
+        .card-name {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 4px;
+            color: var(--text-dark);
+            letter-spacing: -0.3px;
+            font-family: 'Geist', sans-serif;
+        }
+
+        .card-company {
+            font-size: 0.75rem;
+            color: var(--rl-blue);
+            margin-bottom: 6px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-family: 'Geist', sans-serif;
+        }
+
+        .card-title {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            line-height: 1.5;
+            margin-bottom: 12px;
+            flex: 1;
+            font-weight: 400;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 8px;
+            padding-top: 8px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-actions .quick-action-btn {
+            flex: 1;
+            width: auto;
+        }
+
+        .linkedin-icon-btn-small {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            background: var(--rl-blue);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border: none;
+            padding: 0;
+            color: white;
+        }
+
+        .linkedin-icon-btn-small:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(30, 90, 184, 0.3);
+        }
+
+        .linkedin-icon-btn-small svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .share-icon-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            background: var(--rl-blue);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border: none;
+            padding: 0;
+            color: white;
+            text-decoration: none;
+        }
+
+        .share-icon-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(30, 90, 184, 0.3);
+        }
+
+        .share-icon-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .card-action-btn {
+            flex: 1;
+            padding: 13px 16px;
+            border: 2px solid var(--rl-blue);
+            background: white;
+            color: var(--rl-blue);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Geist', sans-serif;
+        }
+
+        .card-action-btn:hover {
+            background: var(--rl-blue);
+            color: white;
+            box-shadow: 0 8px 20px rgba(30, 90, 184, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: white;
+            margin: 40px auto;
+            max-width: 1000px;
+            width: 90%;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--rl-blue-dark) 0%, var(--rl-blue) 100%);
+            color: white;
+            padding: 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-title {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.4px;
+            font-family: 'Geist', sans-serif;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+        }
+
+        .modal-body {
+            padding: 40px;
+        }
+
+        .modal-body-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            max-height: 700px;
+            overflow: hidden;
+        }
+
+        .modal-left-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .modal-right-section {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            justify-content: center;
+        }
+
+        .modal-info-compact {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .info-item-compact {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .modal-button-actions-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .modal-btn-small {
+            padding: 10px 16px;
+            font-size: 0.85rem;
+        }
+
+        .modal-icon-actions-vertical {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .modal-carousel-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 32px;
+        }
+
+        .modal-carousel {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .modal-slide {
+            display: none;
+            width: 100%;
+        }
+
+        .modal-slide.active {
+            display: block;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-carousel-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+        }
+
+        .modal-carousel-arrow {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: var(--rl-blue);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            flex-shrink: 0;
+        }
+
+        .modal-carousel-arrow:hover {
+            background: var(--rl-blue-light);
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(30, 90, 184, 0.3);
+        }
+
+        .modal-carousel-arrow svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .modal-arrow-left {
+            order: -1;
+        }
+
+        .modal-carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            margin-bottom: 32px;
+        }
+
+        .modal-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--rl-gray-300);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .modal-indicator:hover {
+            background: var(--rl-gray-400);
+            transform: scale(1.15);
+        }
+
+        .modal-indicator.active {
+            background: var(--rl-blue);
+            width: 28px;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(30, 90, 184, 0.25);
+        }
+
+        .modal-info {
+            background: linear-gradient(135deg, var(--rl-gray-50) 0%, #FFFFFF 100%);
+            padding: 48px;
+            border-radius: 16px;
+            margin-bottom: 48px;
+            border: 1px solid var(--rl-gray-200);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 48px;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 14px;
+            font-family: 'Geist', sans-serif;
+        }
+
+        .info-value {
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            line-height: 1.3;
+            font-family: 'Geist', sans-serif;
+        }
+
+        .modal-button-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .modal-btn {
+            padding: 16px 28px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-family: 'Geist', sans-serif;
+            width: 100%;
+        }
+
+        .modal-btn-primary {
+            background: linear-gradient(135deg, var(--rl-blue) 0%, var(--rl-blue-light) 100%);
+            color: white;
+            box-shadow: 0 8px 24px rgba(30, 90, 184, 0.3);
+        }
+
+        .modal-btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(30, 90, 184, 0.4);
+        }
+
+        .modal-btn-secondary {
+            background: white;
+            color: var(--rl-blue);
+            border: 2px solid var(--rl-blue);
+        }
+
+        .modal-btn-secondary:hover {
+            background: var(--rl-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        .modal-icon-actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .modal-icon-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            border: none;
+            background: var(--rl-gray-100);
+            color: var(--rl-blue);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+        }
+
+        .modal-icon-btn:hover {
+            background: var(--rl-blue);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .modal-action-btn {
+            flex: 1;
+            min-width: 200px;
+            padding: 18px 32px;
+            border: none;
+            background: linear-gradient(135deg, var(--rl-blue) 0%, var(--rl-blue-light) 100%);
+            color: white;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(30, 90, 184, 0.3);
+            font-family: 'Geist', sans-serif;
+        }
+
+        .modal-action-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(30, 90, 184, 0.4);
+        }
+
+        .linkedin-icon-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--rl-blue) 0%, var(--rl-blue-light) 100%);
+            color: white;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 8px 24px rgba(30, 90, 184, 0.3);
+            text-decoration: none;
+        }
+
+        .linkedin-icon-btn:hover {
+            transform: scale(1.1) translateY(-4px);
+            box-shadow: 0 12px 32px rgba(30, 90, 184, 0.4);
+        }
+
+        .linkedin-icon-btn svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .card-actions .linkedin-icon-btn {
+            width: 48px;
+            height: 48px;
+            padding: 0;
+            flex: 0 0 auto;
+            border-radius: 8px;
+        }
+
+        .card-actions .linkedin-icon-btn svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .card-rep {
+            font-size: 0.8rem;
+            color: var(--rl-blue);
+            margin-top: 8px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+        }
+
+        .card-rep strong {
+            color: var(--rl-blue);
+            margin-right: 4px;
+        }
+
+        .card-quick-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 12px;
+            width: 100%;
+        }
+
+        .quick-action-btn {
+            width: 100%;
+            padding: 12px 14px;
+            border: none;
+            background: var(--rl-blue);
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 400;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            font-family: 'Geist', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            letter-spacing: 0.2px;
+        }
+
+        .quick-action-btn.download-btn {
+            background: white;
+            color: var(--rl-blue);
+            border: 1.5px solid var(--rl-gray-200);
+        }
+
+        .btn-icon {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        .quick-action-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(30, 90, 184, 0.2);
+        }
+
+        .quick-action-btn.download-btn:hover {
+            background: var(--rl-gray-50);
+        }
+
+        .copy-feedback {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--rl-success);
+            color: white;
+            padding: 14px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+            animation: slideIn 0.3s ease-out;
+            z-index: 2000;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Book Section */
+        .book-section {
+            background: linear-gradient(135deg, var(--rl-blue-dark) 0%, var(--rl-blue) 50%, var(--rl-blue-light) 100%);
+            color: white;
+            padding: 120px 20px;
+            text-align: center;
+            margin-top: 120px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-section::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            left: -15%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .book-section::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(59, 127, 223, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .book-section h2 {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 50px;
+            letter-spacing: -0.5px;
+            position: relative;
+            z-index: 2;
+            font-family: 'Geist', sans-serif;
+        }
+
+        .book-mockup-container {
+            display: none;
+        }
+
+        .book-3d-container {
+            perspective: 1200px;
+            display: inline-block;
+            margin: 0;
+        }
+
+        .book-mockup {
+            position: relative;
+            width: 300px;
+            height: 450px;
+            transform-style: preserve-3d;
+            transform: rotateY(-15deg) rotateX(4deg) rotateZ(-2deg);
+            filter: drop-shadow(-40px 50px 80px rgba(0, 0, 0, 0.4))
+                    drop-shadow(-15px 25px 50px rgba(0, 0, 0, 0.25));
+        }
+
+        .book-front {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 2;
+            transform-style: preserve-3d;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: inset -4px 0 8px rgba(0, 0, 0, 0.1),
+                        0 0 0 1px rgba(0, 0, 0, 0.05);
+        }
+
+        .book-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .book-spine {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 24px;
+            height: 100%;
+            background: linear-gradient(90deg, #d0d0d0 0%, #e8e8e8 50%, #d0d0d0 100%);
+            transform: rotateY(-90deg);
+            transform-origin: left center;
+            transform-style: preserve-3d;
+            border-radius: 0 4px 4px 0;
+            box-shadow: inset 2px 0 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-mockup-label {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            width: 100%;
+        }
+
+        .book-section-desc {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* No results */
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-light);
+        }
+
+        .no-results-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .no-results p {
+            font-size: 1.1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .leaders-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-images-section {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-row {
+                gap: 20px;
+            }
+
+            .book-section {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="rocketlane-logo.webp" alt="Rocketlane">
+                <span class="logo-text">Rocketlane</span>
+            </div>
+            <h1>Services Led</h1>
+            <p class="subtitle">Celebrating the professionals transforming customer success and driving innovation at enterprise organizations.</p>
+            <div class="stats-row">
+                <div class="stat">
+                    <div class="stat-number">70</div>
+                    <div class="stat-label">Leaders</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">20+10+40</div>
+                    <div class="stat-label">TSIA Tier 1 + PropelX + Tier 2</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Categories</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Controls -->
+    <div class="controls-section">
+        <div class="container">
+            <div class="controls">
+                <p class="controls-title">Search & Filter Leaders</p>
+                <input type="text" class="search-box" id="searchBox" placeholder="Search by name or company...">
+                <div class="filter-group">
+                    <button class="filter-btn active" data-filter="all">All Leaders (70)</button>
+                    <button class="filter-btn" data-filter="tsia1">TSIA Tier 1 (20)</button>
+                    <button class="filter-btn" data-filter="tsia2">TSIA Tier 2 (40)</button>
+                    <button class="filter-btn" data-filter="propelx">PropelX (10)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="container">
+        <div class="leaders-grid" id="leadersGrid"></div>
+    </div>
+
+    <!-- Modal -->
+    <div id="leaderModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="modalName"></div>
+                <button class="close-btn" id="closeBtn">&times;</button>
+            </div>
+            <div class="modal-body modal-body-grid">
+                <div class="modal-left-section">
+                    <!-- Image Carousel Section -->
+                    <div class="modal-carousel-container">
+                        <button class="modal-carousel-arrow modal-arrow-left" onclick="modalPrevSlide()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+                        <div class="modal-carousel">
+                            <div class="modal-slide active">
+                                <img id="modalMockupImg" class="modal-carousel-image" src="" alt="Book Mockup">
+                            </div>
+                            <div class="modal-slide">
+                                <img id="modalCoverImg" class="modal-carousel-image" src="" alt="Book Cover">
+                            </div>
+                            <div class="modal-slide">
+                                <img id="modalForewordImg" class="modal-carousel-image" src="" alt="Foreword">
+                            </div>
+                        </div>
+                        <button class="modal-carousel-arrow modal-arrow-right" onclick="modalNextSlide()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="modal-carousel-indicators">
+                        <div class="modal-indicator active" onclick="modalGoToSlide(0)"></div>
+                        <div class="modal-indicator" onclick="modalGoToSlide(1)"></div>
+                        <div class="modal-indicator" onclick="modalGoToSlide(2)"></div>
+                    </div>
+                </div>
+
+                <div class="modal-right-section">
+                    <!-- Info Section -->
+                    <div class="modal-info-compact">
+                        <div class="info-item-compact">
+                            <div class="info-label">Company</div>
+                            <div class="info-value" id="modalCompany">-</div>
+                        </div>
+                        <div class="info-item-compact">
+                            <div class="info-label">Title</div>
+                            <div class="info-value" id="modalTitle">-</div>
+                        </div>
+                        <div class="info-item-compact">
+                            <div class="info-label">Rep</div>
+                            <div class="info-value" id="modalRep">-</div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="modal-button-actions-vertical">
+                        <button class="modal-btn modal-btn-primary modal-btn-small" id="modalCopyBtn">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            Copy Template
+                        </button>
+                        <button class="modal-btn modal-btn-secondary modal-btn-small" id="modalDownloadBtn">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download Book Cover
+                        </button>
+                    </div>
+
+                    <!-- Icon Actions -->
+                    <div class="modal-icon-actions-vertical">
+                        <button class="modal-icon-btn share-btn" id="modalShareBtn" title="View personalized page">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="18" cy="5" r="3"></circle>
+                                <circle cx="6" cy="12" r="3"></circle>
+                                <circle cx="18" cy="19" r="3"></circle>
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                            </svg>
+                        </button>
+                        <a id="modalLinkedIn" class="modal-icon-btn linkedin-btn" target="_blank" title="View LinkedIn Profile">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Book Section -->
+    <div class="book-section">
+        <div class="container">
+            <h2>The Complete Collection</h2>
+            <div class="book-mockup-container">
+                <div class="book-mockup">
+                    <div class="book-icon">📚</div>
+                    <div class="book-title">Services Led</div>
+                    <div class="book-description">
+                        <p>A curated collection of personal stories and insights from 70 industry-leading professionals.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="book-section-desc">
+                <p>Each personalized volume features a leader's transformational journey, strategic vision, and impact on their organization. A celebration of those driving innovation in customer success.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data is loaded from data.js - contains leadersData array
+
+        // Helper functions for copy and download
+        function copyOutreachTemplate(leader) {
+            try {
+                // Track the click
+                CTATracker.trackClick(leader.name, 'copy', {
+                    action: 'Copy Outreach Template',
+                    company: leader.company
+                });
+
+                const firstName = leader.name.split(' ')[0];
+                const template = getOutreachTemplate(firstName, leader.company);
+
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(template).then(() => {
+                        showCopyFeedback('✅ Template copied to clipboard!');
+                    }).catch(() => {
+                        fallbackCopy(template);
+                    });
+                } else {
+                    fallbackCopy(template);
+                }
+            } catch (error) {
+                console.error('Copy error:', error);
+                showCopyFeedback('❌ Copy failed. Please try again.');
+            }
+        }
+
+        function fallbackCopy(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showCopyFeedback('✅ Template copied to clipboard!');
+            } catch (error) {
+                showCopyFeedback('❌ Copy failed. Please try again.');
+            }
+            document.body.removeChild(textarea);
+        }
+
+        function downloadCover(leader) {
+            try {
+                // Track the click
+                CTATracker.trackClick(leader.name, 'download', {
+                    action: 'Download Book Cover',
+                    company: leader.company
+                });
+
+                const tierPath = leader.category === 'tsia2' ? 'tier-2/' : 'tier-1-propelx/';
+                const coverPath = tierPath + leader.name + ' - Cover.jpg';
+                const link = document.createElement('a');
+                link.href = coverPath;
+                link.download = `${leader.name} - Cover.jpg`;
+                link.style.display = 'none';
+                document.body.appendChild(link);
+
+                // Check if file exists before downloading
+                fetch(coverPath, { method: 'HEAD' }).then(response => {
+                    if (response.ok) {
+                        link.click();
+                        showCopyFeedback('✅ Cover downloaded!');
+                    } else {
+                        showCopyFeedback('❌ Cover file not found.');
+                    }
+                }).catch(() => {
+                    link.click();
+                    showCopyFeedback('✅ Cover download started!');
+                }).finally(() => {
+                    document.body.removeChild(link);
+                });
+            } catch (error) {
+                console.error('Download error:', error);
+                showCopyFeedback('❌ Download failed. Please try again.');
+            }
+        }
+
+        function showCopyFeedback(message) {
+            const feedback = document.createElement('div');
+            feedback.className = 'copy-feedback';
+            feedback.textContent = message;
+            document.body.appendChild(feedback);
+            setTimeout(() => {
+                feedback.style.animation = 'slideOut 0.3s ease-out forwards';
+                setTimeout(() => {
+                    feedback.remove();
+                }, 300);
+            }, 2700);
+        }
+
+        // Original leader data (kept for reference, but data.js is primary)
+        /*const leadersData = [
+            // TSIA Tier 1 (20 leaders)
+            { name: 'Artem Khvastunov', category: 'tsia1', company: 'JetBrains', title: 'Head of Professional Services', linkedIn: 'https://www.linkedin.com/in/artspb' },
+            { name: 'Carlos Quezada', category: 'tsia1', company: 'Gigamon', title: 'VP Global Services & Success', linkedIn: 'https://www.linkedin.com/in/cquezada' },
+            { name: 'Chad Craig', category: 'tsia1', company: 'Workday', title: 'Senior Director Global Services Delivery', linkedIn: 'https://www.linkedin.com/in/chad-craig-b3530165' },
+            { name: 'Gregory Urban', category: 'tsia1', company: 'Stibo Systems', title: 'SVP Global Professional Services', linkedIn: 'https://www.linkedin.com/in/gurban' },
+            { name: 'Heather Engen', category: 'tsia1', company: 'Netradyne', title: 'Chief Customer Officer', linkedIn: 'https://www.linkedin.com/in/heatherengen' },
+            { name: 'Hilary Gronberg', category: 'tsia1', company: 'MongoDB', title: 'Director Professional Services', linkedIn: 'https://www.linkedin.com/in/hilary-gronberg' },
+            { name: 'Joe Marruchella', category: 'tsia1', company: 'Alteryx', title: 'VP Professional Services', linkedIn: 'https://www.linkedin.com/in/josephmarruchella' },
+            { name: 'Lisa James', category: 'tsia1', company: 'Relias', title: 'SVP Professional Services', linkedIn: 'https://www.linkedin.com/in/ljames1' },
+            { name: 'Marc Winans', category: 'tsia1', company: 'Hitachi Vantara', title: 'Director Global Services', linkedIn: 'https://linkedin.com/in/marc-winans-9a72941' },
+            { name: 'Mayowa Ige', category: 'tsia1', company: 'Optic', title: 'VP Customer Success', linkedIn: 'https://linkedin.com/in/mayowa-ige-12060860' },
+            { name: 'Monique Rupert', category: 'tsia1', company: 'RetailMeNot', title: 'SVP Professional Services', linkedIn: 'https://www.linkedin.com/in/moniquerupert' },
+            { name: 'Nicholas Blades', category: 'tsia1', company: 'Phunware', title: 'VP Professional Services', linkedIn: 'https://www.linkedin.com/in/nick-blades-a4a29aa' },
+            { name: 'Paul Yaros', category: 'tsia1', company: 'Alteryx', title: 'Senior Director Services', linkedIn: 'https://www.linkedin.com/in/paulyaros' },
+            { name: 'Robert DelPonte', category: 'tsia1', company: 'Digital.ai', title: 'VP Professional Services', linkedIn: 'https://www.linkedin.com/in/bob-delponte-1b6704' },
+            { name: 'Sebastien Gagne', category: 'tsia1', company: 'Shopify', title: 'Director Professional Services', linkedIn: 'https://www.linkedin.com/in/gagnesebastien' },
+            { name: 'Sonia Hawkins', category: 'tsia1', company: 'CallidusCloud', title: 'VP Services', linkedIn: 'https://www.linkedin.com/in/sonia-hawkins-b480a12b0' },
+            { name: 'Swati Chopra', category: 'tsia1', company: 'Sorenson', title: 'VP Customer Success', linkedIn: 'https://www.linkedin.com/in/swatichopra11' },
+            { name: 'Todd Crandall', category: 'tsia1', company: 'Intercom', title: 'Director Services', linkedIn: 'https://www.linkedin.com/in/toddcrandall' },
+            { name: 'Troy Baldwin', category: 'tsia1', company: 'Upland', title: 'VP Professional Services', linkedIn: 'https://www.linkedin.com/in/troy-baldwin-0b14931b' },
+            { name: 'Yvonne Chuang', category: 'tsia1', company: 'Cisco', title: 'Director Customer Success', linkedIn: 'https://www.linkedin.com/in/yvonnechuang' },
+
+            // TSIA Tier 2 (40 leaders)
+            { name: 'Aaron Callahan', category: 'tsia2', company: 'PagerDuty', title: 'VP Professional Services', linkedIn: 'https://www.linkedin.com/in/aaroncallahan' },
+            { name: 'Amber Monroe', category: 'tsia2', company: 'Yext', title: 'VP Professional Services', linkedIn: 'https://linkedin.com/in/ambermonroe' },
+            { name: 'Brian Ruffner', category: 'tsia2', company: 'Ping Identity', title: 'Director Services', linkedIn: 'https://www.linkedin.com/in/dr-brian-ruffner-30a976116' },
+            { name: 'Carolyn Hardy', category: 'tsia2', company: 'TechData', title: 'VP Services', linkedIn: 'https://www.linkedin.com/in/carolynmcgeehardy' },
+            { name: 'Chad Stoecker', category: 'tsia2', company: 'CrowdStrike', title: 'Senior Director Services', linkedIn: 'https://www.linkedin.com/in/chad-stoecker' },
+            { name: 'Corina Swaney', category: 'tsia2', company: 'Pendo', title: 'VP Services', linkedIn: 'https://www.linkedin.com/in/corinaswaney' },
+            { name: 'Craig Seeney', category: 'tsia2', company: 'ON24', title: 'VP Professional Services', linkedIn: 'https://www.linkedin.com/in/craig-seeney-41696580' },
+            { name: 'Daniel Silva', category: 'tsia2', company: 'Khoros', title: 'Director Services', linkedIn: 'https://www.linkedin.com/in/dansilva04' },
+            { name: 'Danielle Stallone', category: 'tsia2', company: 'Constant Contact', title: 'VP Services', linkedIn: 'https://www.linkedin.com/in/danielle-stallone' },
+            { name: 'Dave Lavanty', category: 'tsia2', company: 'SPS Commerce', title: 'Director Services', linkedIn: 'https://www.linkedin.com/in/davidlavanty' },
+            { name: 'Derek Wallace', category: 'tsia2', company: 'RetailMeNot', title: 'Senior Director Services', linkedIn: 'https://www.linkedin.com/in/derekwallace' },
+            { name: 'Desiree Tipuric', category: 'tsia2', company: 'Sprinklr', title: 'VP Professional Services', linkedIn: 'https://www.linkedin.com/in/desiree-christine-tipuric-1070b453/' },
+            { name: 'Drew Davis', category: 'tsia2', company: 'RingCentral', title: 'Director Services', linkedIn: 'https://www.linkedin.com/in/drewallendavis/' },
+            { name: 'Ed Tatman', category: 'tsia2', company: 'Dealertrack', title: 'VP Services', linkedIn: 'https://linkedin.com/in/edtatman' },
+            { name: 'Eric Lee', category: 'tsia2', company: 'Apptio', title: 'Director Services', linkedIn: 'https://www.linkedin.com/in/ericlee6/' },
+            { name: 'Eric Panepinto', category: 'tsia2', company: 'Zuora', title: 'VP Professional Services', linkedIn: 'https://linkedin.com/in/ericpanepinto' },
+            { name: 'Flavia Rigamonti', category: 'tsia2', company: 'Sitecore', title: 'VP Services', linkedIn: 'https://www.linkedin.com/in/flaviar' },
+            { name: 'Gregorie Dejonckheere', category: 'tsia2', company: 'DataBox', title: 'VP Services', linkedIn: 'https://linkedin.com/in/gregorie-dejonckheere' },
+            { name: 'Jaclyn Todd', category: 'tsia2', company: 'Avertium', title: 'SVP Professional Services', linkedIn: 'https://linkedin.com/in/jaclyntodd' },
+            { name: 'Jason McGregor', category: 'tsia2', company: 'BrightEdge', title: 'VP Services', linkedIn: 'https://www.linkedin.com/in/jason-mcgregor-99097b12' },
+            { name: 'Jeff Burkhart', category: 'tsia2', company: 'Act-On', title: 'VP Professional Services', linkedIn: 'https://www.linkedin.com/in/jeff-burkhart-pmp-99a4174' },
+            { name: 'Jeffrey Khaw', category: 'tsia2', company: 'Linamar', title: 'Director Services', linkedIn: 'https://www.linkedin.com/in/jeffrey-khaw-88b17221' },
+            { name: 'Jennifer Turgeon', category: 'tsia2', company: 'CoreWeave', title: 'VP Services', linkedIn: 'https://www.linkedin.com/in/jennifer-turgeon-2b126626' },
+            { name: 'Jesper Cordes', category: 'tsia2', company: 'BrightTalk', title: 'Director Services', linkedIn: 'https://www.linkedin.com/in/jesper-cordes' },
+            { name: 'Jitendra Joshi', category: 'tsia2', company: 'Bazaarvoice', title: 'VP Professional Services', linkedIn: 'https://www.linkedin.com/in/joshijitendra' },
+            { name: 'Joshua Hoffert', category: 'tsia2', company: 'Ping Identity', title: 'Senior Director Services', linkedIn: 'https://www.linkedin.com/in/joshuahoffert' },
+            { name: 'Kylin Cao', category: 'tsia2', company: 'BigCommerce', title: 'Director Services', linkedIn: 'https://www.linkedin.com/in/kylincao' },
+            { name: 'Laura Repaci', category: 'tsia2', company: 'Frontify', title: 'VP Services', linkedIn: 'https://www.linkedin.com/in/laura-repaci' },
+            { name: 'Lee Palmer', category: 'tsia2', company: 'WalkMe', title: 'Director Services', linkedIn: 'https://www.linkedin.com/in/lee-palmer-136593' },
+            { name: 'Lisa Haag', category: 'tsia2', company: 'Logz.io', title: 'VP Professional Services', linkedIn: 'https://linkedin.com/in/lisa-haag' },
+            { name: 'Mansuk Suh', category: 'tsia2', company: 'Opinary', title: 'Director Services', linkedIn: 'https://www.linkedin.com/in/mansuk' },
+            { name: 'Sadie Brackin', category: 'tsia2', company: 'Planview', title: 'VP Services', linkedIn: 'https://linkedin.com/in/sadie-brackin' },
+            { name: 'Scott Cravotta', category: 'tsia2', company: 'LivePerson', title: 'Director Services', linkedIn: 'https://linkedin.com/in/scott-cravotta-31b4843' },
+            { name: 'Scott MacPhee', category: 'tsia2', company: 'Domo', title: 'VP Professional Services', linkedIn: 'https://linkedin.com/in/scott-macphee-215a756' },
+            { name: 'Sofia Barbosa', category: 'tsia2', company: 'ZoomInfo', title: 'Director Services', linkedIn: 'https://www.linkedin.com/in/sofiabarbosa' },
+            { name: 'Steve Spence', category: 'tsia2', company: 'Apptio', title: 'Senior Director Services', linkedIn: 'https://www.linkedin.com/in/stephenspence0000' },
+            { name: 'Terri Olson-Stepp', category: 'tsia2', company: 'BigCommerce', title: 'VP Services', linkedIn: 'https://linkedin.com/in/terriolsonstepp' },
+            { name: 'Tiago Eliseu', category: 'tsia2', company: 'Bazaarvoice', title: 'Director Services', linkedIn: 'https://www.linkedin.com/in/tiago-eliseu/' },
+            { name: 'Tonia Whitton', category: 'tsia2', company: 'WalkMe', title: 'VP Professional Services', linkedIn: 'https://www.linkedin.com/in/tonia-whitton-b95678' },
+            { name: 'Yogesh Jankee', category: 'tsia2', company: 'RetailMeNot', title: 'Director Services', linkedIn: 'https://www.linkedin.com/in/yogeshjankee' },
+
+            // PropelX (10 leaders)
+            { name: 'Gerard Allen', category: 'propelx', company: 'SailPoint', title: 'SVP Global Services', linkedIn: 'https://linkedin.com/in/gerard-allen' },
+            { name: 'Grant Watling', category: 'propelx', company: 'LogicMonitor', title: 'VP Global Services', linkedIn: 'https://linkedin.com/in/grantwatling' },
+            { name: 'Hendrik Zondag', category: 'propelx', company: 'SolarWinds', title: 'VP Professional Services', linkedIn: 'https://linkedin.com/in/hendrik-zondag' },
+            { name: 'Kerri Geddes', category: 'propelx', company: 'UiPath', title: 'VP Professional Services', linkedIn: 'https://linkedin.com/in/kerri-geddes' },
+            { name: 'Liam Miner', category: 'propelx', company: 'ServiceTitan', title: 'Director Services', linkedIn: 'https://linkedin.com/in/liamminer' },
+            { name: 'Olivier Laarhoven', category: 'propelx', company: 'Avalara', title: 'VP Global Services', linkedIn: 'https://linkedin.com/in/olivier-laarhoven' },
+            { name: 'Rui Vieira', category: 'propelx', company: 'OutSystems', title: 'VP Professional Services', linkedIn: 'https://linkedin.com/in/ruivieira' },
+            { name: 'Steff Johnston', category: 'propelx', company: 'Varonis', title: 'Director Professional Services', linkedIn: 'https://linkedin.com/in/steff-johnston' },
+            { name: 'Sukanya Kuppuswamy', category: 'propelx', company: 'Thought Industries', title: 'VP Professional Services', linkedIn: 'https://linkedin.com/in/sukanya-kuppuswamy' },
+            { name: 'Vidya Macleod', category: 'propelx', company: 'Okta', title: 'Director Customer Success', linkedIn: 'https://linkedin.com/in/vidya-macleod' }
+        ];*/
+
+        // Modal functions
+        const modal = document.getElementById('leaderModal');
+        const closeBtn = document.getElementById('closeBtn');
+
+        closeBtn.onclick = () => modal.style.display = 'none';
+        window.onclick = (e) => {
+            if (e.target === modal) modal.style.display = 'none';
+        };
+
+        function getCategoryLabel(category) {
+            const labels = {
+                'tsia1': 'TSIA Tier 1',
+                'tsia2': 'TSIA Tier 2',
+                'propelx': 'PropelX'
+            };
+            return labels[category] || category;
+        }
+
+        let modalCurrentSlide = 0;
+
+        function modalGoToSlide(index) {
+            const slides = document.querySelectorAll('.modal-slide');
+            if (!slides.length) return;
+
+            modalCurrentSlide = (index + slides.length) % slides.length;
+            const indicators = document.querySelectorAll('.modal-indicator');
+
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === modalCurrentSlide);
+            });
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('active', i === modalCurrentSlide);
+            });
+        }
+
+        function modalNextSlide() {
+            const slides = document.querySelectorAll('.modal-slide');
+            modalGoToSlide(modalCurrentSlide + 1);
+        }
+
+        function modalPrevSlide() {
+            const slides = document.querySelectorAll('.modal-slide');
+            modalGoToSlide(modalCurrentSlide - 1);
+        }
+
+        function openLeaderModal(leader) {
+            document.getElementById('modalName').textContent = leader.name;
+            document.getElementById('modalCompany').textContent = leader.company;
+            document.getElementById('modalTitle').textContent = leader.title;
+            document.getElementById('modalRep').textContent = leader.rep || 'Unassigned';
+
+            // Set image paths
+            const mockupPath = leader.category === 'tsia2' ? 'angled-mockups-tier-2/' : 'angled-mockups-tier-1-propelx/';
+            const tierPath = leader.category === 'tsia2' ? 'tier-2/' : 'tier-1-propelx/';
+            const firstName = leader.name.split(' ')[0];
+
+            // Set carousel images
+            document.getElementById('modalMockupImg').src = mockupPath + leader.name + ' - Angled Mockup.jpg';
+            document.getElementById('modalCoverImg').src = tierPath + leader.name + ' - Cover.jpg';
+            document.getElementById('modalForewordImg').src = tierPath + firstName + ' - Foreword.jpg';
+
+            // Reset to first slide
+            modalGoToSlide(0);
+
+            // Set up LinkedIn link
+            const linkedInLink = document.getElementById('modalLinkedIn');
+            if (leader.linkedIn) {
+                linkedInLink.href = leader.linkedIn;
+                linkedInLink.style.opacity = '1';
+            } else {
+                linkedInLink.href = '#';
+                linkedInLink.style.opacity = '0.5';
+                linkedInLink.style.pointerEvents = 'none';
+            }
+
+            // Set up button click handlers
+            const copyBtn = document.getElementById('modalCopyBtn');
+            const downloadBtn = document.getElementById('modalDownloadBtn');
+            const shareBtn = document.getElementById('modalShareBtn');
+            const slug = createSlug(leader.name);
+
+            copyBtn.onclick = () => copyOutreachTemplate(leader);
+            downloadBtn.onclick = () => downloadCover(leader);
+            shareBtn.onclick = () => window.location.href = 'leader.html?name=' + slug;
+
+            modal.style.display = 'block';
+        }
+
+        function createLeaderCard(leader) {
+            const tierPath = leader.category === 'tsia2' ? 'tier-2/' : 'tier-1-propelx/';
+            const mockupPath = leader.category === 'tsia2' ? 'angled-mockups-tier-2/' : 'angled-mockups-tier-1-propelx/';
+            const firstName = leader.name.split(' ')[0];
+            const slug = createSlug(leader.name);
+
+            const card = document.createElement('div');
+            card.className = 'leader-card';
+
+            // Store leader data as data attributes for safe access
+            card.dataset.leaderName = leader.name;
+            card.dataset.leaderCompany = leader.company;
+            card.dataset.leaderTitle = leader.title;
+            card.dataset.leaderCategory = leader.category;
+            card.dataset.leaderLinkedIn = leader.linkedIn || '';
+
+            card.innerHTML = `
+                <div class="card-image-container">
+                    <div class="book-mockup-card">
+                        <img src="${mockupPath}${leader.name} - Angled Mockup.jpg" alt="${leader.name}" class="card-image">
+                    </div>
+                    <span class="card-tier-badge">${getCategoryLabel(leader.category)}</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-name">${escapeHtml(leader.name)}</div>
+                    <div class="card-company">${escapeHtml(leader.company)}</div>
+                    <div class="card-title">${escapeHtml(leader.title)}</div>
+                    <div class="card-rep"><strong>Rep:</strong> ${escapeHtml(leader.rep || 'Unassigned')}</div>
+                    <div class="card-quick-actions">
+                        <button class="quick-action-btn download-btn" title="Download book cover">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download Book Cover
+                        </button>
+                    </div>
+                    <div class="card-actions">
+                        <button class="quick-action-btn copy-btn" title="Copy outreach template">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            Copy Template
+                        </button>
+                        <a href="leader.html?name=${slug}" class="share-icon-btn" title="View personalized page">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="18" cy="5" r="3"></circle>
+                                <circle cx="6" cy="12" r="3"></circle>
+                                <circle cx="18" cy="19" r="3"></circle>
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                            </svg>
+                        </a>
+                        ${leader.linkedIn ? `<a href="${leader.linkedIn}" target="_blank" class="linkedin-icon-btn-small" title="View LinkedIn Profile"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>` : ''}
+                    </div>
+                </div>
+            `;
+
+            // Add event listeners after creating the card
+            const imageContainer = card.querySelector('.card-image-container');
+            const copyBtn = card.querySelector('.copy-btn');
+            const downloadBtn = card.querySelector('.download-btn');
+
+            imageContainer.addEventListener('click', () => openLeaderModal(leader));
+            copyBtn.addEventListener('click', () => copyOutreachTemplate(leader));
+            downloadBtn.addEventListener('click', () => downloadCover(leader));
+
+            return card;
+        }
+
+        // Helper to escape HTML special characters
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Filter and search
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const searchBox = document.getElementById('searchBox');
+        const grid = document.getElementById('leadersGrid');
+
+        let currentFilter = 'all';
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilter = btn.dataset.filter;
+                renderLeaders();
+            });
+        });
+
+        searchBox.addEventListener('input', () => {
+            renderLeaders();
+        });
+
+        function renderLeaders() {
+            grid.innerHTML = '';
+            const searchTerm = searchBox.value.toLowerCase();
+
+            let filtered = leadersData.filter(leader => {
+                const matchesSearch = leader.name.toLowerCase().includes(searchTerm) ||
+                                     leader.company.toLowerCase().includes(searchTerm);
+
+                if (currentFilter === 'all') return matchesSearch;
+                return matchesSearch && leader.category === currentFilter;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-results">
+                        <div class="no-results-icon">🔍</div>
+                        <p>No leaders found. Try adjusting your search or filter.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(leader => {
+                grid.appendChild(createLeaderCard(leader));
+            });
+        }
+
+        // Initialize
+        renderLeaders();
+    </script>
+</body>
+</html>
