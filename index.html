@@ -7,6 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="data.js"></script>
+    <script src="tracking.js"></script>
     <style>
         * {
             margin: 0;
@@ -48,6 +50,11 @@
         /* Header */
         header {
             background: linear-gradient(135deg, var(--rl-blue-dark) 0%, var(--rl-blue) 100%);
+            background-image: url('./vegas-hero.png');
+            background-size: cover;
+            background-position: right 85%;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
             color: white;
             padding: 100px 20px;
             margin-bottom: 80px;
@@ -58,14 +65,13 @@
         header::before {
             content: '';
             position: absolute;
-            top: -40%;
-            right: -15%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
-            border-radius: 50%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: transparent;
             pointer-events: none;
-            animation: float 20s ease-in-out infinite;
+            z-index: 0;
         }
 
         header::after {
@@ -78,6 +84,7 @@
             background: radial-gradient(circle, rgba(59, 127, 223, 0.15) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
+            z-index: 2;
         }
 
         @keyframes float {
@@ -100,7 +107,7 @@
         }
 
         .logo img {
-            height: 70px;
+            height: 140px;
             width: auto;
             object-fit: contain;
         }
@@ -111,7 +118,7 @@
 
         h1 {
             font-size: 4.2rem;
-            font-weight: 800;
+            font-weight: 600;
             margin-bottom: 20px;
             line-height: 1.1;
             letter-spacing: -0.8px;
@@ -280,26 +287,50 @@
             position: relative;
             width: 100%;
             height: 300px;
-            background: linear-gradient(135deg, #F5F7FA 0%, #E8EDEF 100%);
             overflow: hidden;
-            perspective: 1200px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 16px;
         }
 
         .book-mockup-card {
             position: relative;
-            width: 180px;
-            height: 280px;
-            transform-style: preserve-3d;
-            transform: rotateY(-8deg) rotateX(2deg);
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 12px;
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            filter: drop-shadow(15px 20px 40px rgba(0, 0, 0, 0.2))
+                    drop-shadow(8px 10px 20px rgba(0, 0, 0, 0.1));
         }
 
         .leader-card:hover .book-mockup-card {
-            transform: rotateY(-12deg) rotateX(3deg) scale(1.05);
+            transform: scale(1.05);
+            filter: drop-shadow(18px 24px 48px rgba(0, 0, 0, 0.25))
+                    drop-shadow(10px 12px 24px rgba(0, 0, 0, 0.15));
+        }
+
+        .book-mockup-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .book-spine-card {
+            display: block !important;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 14px;
+            height: 100%;
+            background: linear-gradient(90deg, #1a1a1a 0%, #2d2d2d 50%, #1f1f1f 100%);
+            transform: rotateY(90deg);
+            transform-origin: left center;
+            transform-style: preserve-3d;
+            z-index: 0;
+            border-radius: 1px 0 0 1px;
         }
 
         .book-front-card {
@@ -308,9 +339,36 @@
             height: 100%;
             background: white;
             z-index: 2;
-            border-radius: 3px;
-            box-shadow: -15px 20px 40px rgba(0, 0, 0, 0.25),
-                        -8px 10px 20px rgba(0, 0, 0, 0.15);
+            border-radius: 2px 6px 6px 2px;
+            overflow: hidden;
+            box-shadow: inset -8px 0 16px rgba(0, 0, 0, 0.1),
+                        -2px 0 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-front-card::before {
+            content: '';
+            position: absolute;
+            right: -12px;
+            top: 0;
+            width: 12px;
+            height: 100%;
+            background: linear-gradient(90deg, #f5f5f5 0%, #e8e8e8 100%);
+            transform: rotateY(-80deg);
+            transform-origin: right center;
+            transform-style: preserve-3d;
+            box-shadow: inset 2px 0 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-front-card::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: 1px;
+            width: 8px;
+            height: 100%;
+            background: linear-gradient(90deg, #efefef 0%, #d8d8d0 100%);
+            z-index: -1;
+            box-shadow: inset -1px 0 2px rgba(0, 0, 0, 0.15);
         }
 
         .card-image {
@@ -335,7 +393,7 @@
             padding: 6px 12px;
             border-radius: 6px;
             font-size: 0.65rem;
-            font-weight: 700;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -352,7 +410,7 @@
 
         .card-name {
             font-size: 1.2rem;
-            font-weight: 600;
+            font-weight: 400;
             margin-bottom: 4px;
             color: var(--text-dark);
             letter-spacing: -0.3px;
@@ -381,8 +439,65 @@
         .card-actions {
             display: flex;
             gap: 8px;
-            border-top: 1px solid var(--rl-gray-100);
-            padding-top: 12px;
+            padding-top: 8px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-actions .quick-action-btn {
+            flex: 1;
+            width: auto;
+        }
+
+        .linkedin-icon-btn-small {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            background: var(--rl-blue);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border: none;
+            padding: 0;
+            color: white;
+        }
+
+        .linkedin-icon-btn-small:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(30, 90, 184, 0.3);
+        }
+
+        .linkedin-icon-btn-small svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .share-icon-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            background: var(--rl-blue);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border: none;
+            padding: 0;
+            color: white;
+            text-decoration: none;
+        }
+
+        .share-icon-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(30, 90, 184, 0.3);
+        }
+
+        .share-icon-btn svg {
+            width: 18px;
+            height: 18px;
         }
 
         .card-action-btn {
@@ -446,7 +561,7 @@
 
         .modal-title {
             font-size: 2.2rem;
-            font-weight: 700;
+            font-weight: 600;
             letter-spacing: -0.4px;
             font-family: 'Geist', sans-serif;
         }
@@ -474,40 +589,154 @@
             padding: 40px;
         }
 
-        .modal-images-section {
+        .modal-body-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            max-height: 700px;
+            overflow: hidden;
         }
 
-        .image-box {
-            text-align: center;
+        .modal-left-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .image-box h4 {
-            font-size: 0.8rem;
-            font-weight: 900;
-            color: var(--rl-blue);
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-family: 'Geist', sans-serif;
+        .modal-right-section {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            justify-content: center;
         }
 
-        .modal-image {
+        .modal-info-compact {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .info-item-compact {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .modal-button-actions-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .modal-btn-small {
+            padding: 10px 16px;
+            font-size: 0.85rem;
+        }
+
+        .modal-icon-actions-vertical {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .modal-carousel-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 32px;
+        }
+
+        .modal-carousel {
+            position: relative;
             width: 100%;
-            border-radius: 14px;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
-            max-height: 500px;
-            object-fit: cover;
-            border: 2px solid var(--rl-gray-200);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            max-width: 450px;
+            overflow: hidden;
+            border-radius: 12px;
         }
 
-        .modal-image:hover {
-            transform: scale(1.03);
+        .modal-slide {
+            display: none;
+            width: 100%;
+        }
+
+        .modal-slide.active {
+            display: block;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-carousel-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
             box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+        }
+
+        .modal-carousel-arrow {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: var(--rl-blue);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            flex-shrink: 0;
+        }
+
+        .modal-carousel-arrow:hover {
+            background: var(--rl-blue-light);
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(30, 90, 184, 0.3);
+        }
+
+        .modal-carousel-arrow svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .modal-arrow-left {
+            order: -1;
+        }
+
+        .modal-carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            margin-bottom: 32px;
+        }
+
+        .modal-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--rl-gray-300);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .modal-indicator:hover {
+            background: var(--rl-gray-400);
+            transform: scale(1.15);
+        }
+
+        .modal-indicator.active {
+            background: var(--rl-blue);
+            width: 28px;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(30, 90, 184, 0.25);
         }
 
         .modal-info {
@@ -544,9 +773,87 @@
         .info-value {
             font-size: 1.25rem;
             color: var(--text-dark);
-            font-weight: 700;
+            font-weight: 600;
             line-height: 1.3;
             font-family: 'Geist', sans-serif;
+        }
+
+        .modal-button-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .modal-btn {
+            padding: 16px 28px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-family: 'Geist', sans-serif;
+            width: 100%;
+        }
+
+        .modal-btn-primary {
+            background: linear-gradient(135deg, var(--rl-blue) 0%, var(--rl-blue-light) 100%);
+            color: white;
+            box-shadow: 0 8px 24px rgba(30, 90, 184, 0.3);
+        }
+
+        .modal-btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(30, 90, 184, 0.4);
+        }
+
+        .modal-btn-secondary {
+            background: white;
+            color: var(--rl-blue);
+            border: 2px solid var(--rl-blue);
+        }
+
+        .modal-btn-secondary:hover {
+            background: var(--rl-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        .modal-icon-actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .modal-icon-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            border: none;
+            background: var(--rl-gray-100);
+            color: var(--rl-blue);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+        }
+
+        .modal-icon-btn:hover {
+            background: var(--rl-blue);
+            color: white;
+            transform: scale(1.1);
         }
 
         .modal-actions {
@@ -565,7 +872,7 @@
             border-radius: 12px;
             cursor: pointer;
             font-size: 0.95rem;
-            font-weight: 700;
+            font-weight: 600;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             text-decoration: none;
             text-align: center;
@@ -618,6 +925,106 @@
             height: 22px;
         }
 
+        .card-rep {
+            font-size: 0.8rem;
+            color: var(--rl-blue);
+            margin-top: 8px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+        }
+
+        .card-rep strong {
+            color: var(--rl-blue);
+            margin-right: 4px;
+        }
+
+        .card-quick-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 12px;
+            width: 100%;
+        }
+
+        .quick-action-btn {
+            width: 100%;
+            padding: 12px 14px;
+            border: none;
+            background: var(--rl-blue);
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 400;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            font-family: 'Geist', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            letter-spacing: 0.2px;
+        }
+
+        .quick-action-btn.download-btn {
+            background: white;
+            color: var(--rl-blue);
+            border: 1.5px solid var(--rl-gray-200);
+        }
+
+        .btn-icon {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        .quick-action-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(30, 90, 184, 0.2);
+        }
+
+        .quick-action-btn.download-btn:hover {
+            background: var(--rl-gray-50);
+        }
+
+        .copy-feedback {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--rl-success);
+            color: white;
+            padding: 14px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+            animation: slideIn 0.3s ease-out;
+            z-index: 2000;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+        }
+
         /* Book Section */
         .book-section {
             background: linear-gradient(135deg, var(--rl-blue-dark) 0%, var(--rl-blue) 50%, var(--rl-blue-light) 100%);
@@ -657,7 +1064,7 @@
 
         .book-section h2 {
             font-size: 3rem;
-            font-weight: 700;
+            font-weight: 600;
             margin-bottom: 50px;
             letter-spacing: -0.5px;
             position: relative;
@@ -680,12 +1087,9 @@
             width: 300px;
             height: 450px;
             transform-style: preserve-3d;
-            transform: rotateY(-12deg) rotateX(3deg);
-            box-shadow: -30px 40px 70px rgba(0, 0, 0, 0.35),
-                        -15px 20px 40px rgba(0, 0, 0, 0.25),
-                        0 0 0 1px rgba(0, 0, 0, 0.05);
-            border-radius: 6px;
-            overflow: hidden;
+            transform: rotateY(-15deg) rotateX(4deg) rotateZ(-2deg);
+            filter: drop-shadow(-40px 50px 80px rgba(0, 0, 0, 0.4))
+                    drop-shadow(-15px 25px 50px rgba(0, 0, 0, 0.25));
         }
 
         .book-front {
@@ -694,6 +1098,11 @@
             height: 100%;
             background: white;
             z-index: 2;
+            transform-style: preserve-3d;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: inset -4px 0 8px rgba(0, 0, 0, 0.1),
+                        0 0 0 1px rgba(0, 0, 0, 0.05);
         }
 
         .book-front img {
@@ -704,7 +1113,17 @@
         }
 
         .book-spine {
-            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 24px;
+            height: 100%;
+            background: linear-gradient(90deg, #d0d0d0 0%, #e8e8e8 50%, #d0d0d0 100%);
+            transform: rotateY(-90deg);
+            transform-origin: left center;
+            transform-style: preserve-3d;
+            border-radius: 0 4px 4px 0;
+            box-shadow: inset 2px 0 4px rgba(0, 0, 0, 0.1);
         }
 
         .book-mockup-label {
@@ -823,57 +1242,92 @@
                 <div class="modal-title" id="modalName"></div>
                 <button class="close-btn" id="closeBtn">&times;</button>
             </div>
-            <div class="modal-body">
-                <!-- Images Section -->
-                <div class="modal-images-section">
-                    <div class="image-box">
-                        <h4>Book Mockup</h4>
-                        <div style="background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%); padding: 50px 30px; border-radius: 14px; min-height: 500px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--rl-gray-200);">
-                            <div class="book-3d-container">
-                                <div class="book-mockup">
-                                    <div class="book-front">
-                                        <img id="modalMockupImg" src="" alt="Book Mockup">
-                                    </div>
-                                    <div class="book-spine"></div>
-                                </div>
+            <div class="modal-body modal-body-grid">
+                <div class="modal-left-section">
+                    <!-- Image Carousel Section -->
+                    <div class="modal-carousel-container">
+                        <button class="modal-carousel-arrow modal-arrow-left" onclick="modalPrevSlide()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+                        <div class="modal-carousel">
+                            <div class="modal-slide active">
+                                <img id="modalMockupImg" class="modal-carousel-image" src="" alt="Book Mockup">
+                            </div>
+                            <div class="modal-slide">
+                                <img id="modalCoverImg" class="modal-carousel-image" src="" alt="Book Cover">
+                            </div>
+                            <div class="modal-slide">
+                                <img id="modalForewordImg" class="modal-carousel-image" src="" alt="Foreword">
                             </div>
                         </div>
+                        <button class="modal-carousel-arrow modal-arrow-right" onclick="modalNextSlide()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
                     </div>
-                    <div class="image-box">
-                        <h4>Book Cover</h4>
-                        <img id="modalCover" class="modal-image" src="" alt="Book Cover">
-                    </div>
-                    <div class="image-box">
-                        <h4>Foreword</h4>
-                        <img id="modalForeword" class="modal-image" src="" alt="Foreword">
+                    <div class="modal-carousel-indicators">
+                        <div class="modal-indicator active" onclick="modalGoToSlide(0)"></div>
+                        <div class="modal-indicator" onclick="modalGoToSlide(1)"></div>
+                        <div class="modal-indicator" onclick="modalGoToSlide(2)"></div>
                     </div>
                 </div>
 
-                <!-- Info Section -->
-                <div class="modal-info">
-                    <div class="info-row">
-                        <div class="info-item">
+                <div class="modal-right-section">
+                    <!-- Info Section -->
+                    <div class="modal-info-compact">
+                        <div class="info-item-compact">
                             <div class="info-label">Company</div>
                             <div class="info-value" id="modalCompany">-</div>
                         </div>
-                        <div class="info-item">
+                        <div class="info-item-compact">
                             <div class="info-label">Title</div>
                             <div class="info-value" id="modalTitle">-</div>
                         </div>
-                        <div class="info-item">
-                            <div class="info-label">Category</div>
-                            <div class="info-value" id="modalCategory">-</div>
+                        <div class="info-item-compact">
+                            <div class="info-label">Rep</div>
+                            <div class="info-value" id="modalRep">-</div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Actions -->
-                <div class="modal-actions">
-                    <a id="modalLinkedIn" class="linkedin-icon-btn" target="_blank" title="View LinkedIn Profile">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
-                        </svg>
-                    </a>
+                    <!-- Action Buttons -->
+                    <div class="modal-button-actions-vertical">
+                        <button class="modal-btn modal-btn-primary modal-btn-small" id="modalCopyBtn">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            Copy Template
+                        </button>
+                        <button class="modal-btn modal-btn-secondary modal-btn-small" id="modalDownloadBtn">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download Book Cover
+                        </button>
+                    </div>
+
+                    <!-- Icon Actions -->
+                    <div class="modal-icon-actions-vertical">
+                        <button class="modal-icon-btn share-btn" id="modalShareBtn" title="View personalized page">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="18" cy="5" r="3"></circle>
+                                <circle cx="6" cy="12" r="3"></circle>
+                                <circle cx="18" cy="19" r="3"></circle>
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                            </svg>
+                        </button>
+                        <a id="modalLinkedIn" class="modal-icon-btn linkedin-btn" target="_blank" title="View LinkedIn Profile">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -899,8 +1353,102 @@
     </div>
 
     <script>
-        // Leader data with all fields
-        const leadersData = [
+        // Data is loaded from data.js - contains leadersData array
+
+        // Helper functions for copy and download
+        function copyOutreachTemplate(leader) {
+            try {
+                // Track the click
+                CTATracker.trackClick(leader.name, 'copy', {
+                    action: 'Copy Outreach Template',
+                    company: leader.company
+                });
+
+                const firstName = leader.name.split(' ')[0];
+                const template = getOutreachTemplate(firstName, leader.company);
+
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(template).then(() => {
+                        showCopyFeedback('✅ Template copied to clipboard!');
+                    }).catch(() => {
+                        fallbackCopy(template);
+                    });
+                } else {
+                    fallbackCopy(template);
+                }
+            } catch (error) {
+                console.error('Copy error:', error);
+                showCopyFeedback('❌ Copy failed. Please try again.');
+            }
+        }
+
+        function fallbackCopy(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showCopyFeedback('✅ Template copied to clipboard!');
+            } catch (error) {
+                showCopyFeedback('❌ Copy failed. Please try again.');
+            }
+            document.body.removeChild(textarea);
+        }
+
+        function downloadCover(leader) {
+            try {
+                // Track the click
+                CTATracker.trackClick(leader.name, 'download', {
+                    action: 'Download Book Cover',
+                    company: leader.company
+                });
+
+                const tierPath = leader.category === 'tsia2' ? 'tier-2/' : 'tier-1-propelx/';
+                const coverPath = tierPath + leader.name + ' - Cover.jpg';
+                const link = document.createElement('a');
+                link.href = coverPath;
+                link.download = `${leader.name} - Cover.jpg`;
+                link.style.display = 'none';
+                document.body.appendChild(link);
+
+                // Check if file exists before downloading
+                fetch(coverPath, { method: 'HEAD' }).then(response => {
+                    if (response.ok) {
+                        link.click();
+                        showCopyFeedback('✅ Cover downloaded!');
+                    } else {
+                        showCopyFeedback('❌ Cover file not found.');
+                    }
+                }).catch(() => {
+                    link.click();
+                    showCopyFeedback('✅ Cover download started!');
+                }).finally(() => {
+                    document.body.removeChild(link);
+                });
+            } catch (error) {
+                console.error('Download error:', error);
+                showCopyFeedback('❌ Download failed. Please try again.');
+            }
+        }
+
+        function showCopyFeedback(message) {
+            const feedback = document.createElement('div');
+            feedback.className = 'copy-feedback';
+            feedback.textContent = message;
+            document.body.appendChild(feedback);
+            setTimeout(() => {
+                feedback.style.animation = 'slideOut 0.3s ease-out forwards';
+                setTimeout(() => {
+                    feedback.remove();
+                }, 300);
+            }, 2700);
+        }
+
+        // Original leader data (kept for reference, but data.js is primary)
+        /*const leadersData = [
             // TSIA Tier 1 (20 leaders)
             { name: 'Artem Khvastunov', category: 'tsia1', company: 'JetBrains', title: 'Head of Professional Services', linkedIn: 'https://www.linkedin.com/in/artspb' },
             { name: 'Carlos Quezada', category: 'tsia1', company: 'Gigamon', title: 'VP Global Services & Success', linkedIn: 'https://www.linkedin.com/in/cquezada' },
@@ -976,7 +1524,7 @@
             { name: 'Steff Johnston', category: 'propelx', company: 'Varonis', title: 'Director Professional Services', linkedIn: 'https://linkedin.com/in/steff-johnston' },
             { name: 'Sukanya Kuppuswamy', category: 'propelx', company: 'Thought Industries', title: 'VP Professional Services', linkedIn: 'https://linkedin.com/in/sukanya-kuppuswamy' },
             { name: 'Vidya Macleod', category: 'propelx', company: 'Okta', title: 'Director Customer Success', linkedIn: 'https://linkedin.com/in/vidya-macleod' }
-        ];
+        ];*/
 
         // Modal functions
         const modal = document.getElementById('leaderModal');
@@ -996,66 +1544,153 @@
             return labels[category] || category;
         }
 
+        let modalCurrentSlide = 0;
+
+        function modalGoToSlide(index) {
+            const slides = document.querySelectorAll('.modal-slide');
+            if (!slides.length) return;
+
+            modalCurrentSlide = (index + slides.length) % slides.length;
+            const indicators = document.querySelectorAll('.modal-indicator');
+
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === modalCurrentSlide);
+            });
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('active', i === modalCurrentSlide);
+            });
+        }
+
+        function modalNextSlide() {
+            const slides = document.querySelectorAll('.modal-slide');
+            modalGoToSlide(modalCurrentSlide + 1);
+        }
+
+        function modalPrevSlide() {
+            const slides = document.querySelectorAll('.modal-slide');
+            modalGoToSlide(modalCurrentSlide - 1);
+        }
+
         function openLeaderModal(leader) {
             document.getElementById('modalName').textContent = leader.name;
             document.getElementById('modalCompany').textContent = leader.company;
             document.getElementById('modalTitle').textContent = leader.title;
-            document.getElementById('modalCategory').textContent = getCategoryLabel(leader.category);
+            document.getElementById('modalRep').textContent = leader.rep || 'Unassigned';
 
             // Set image paths
+            const mockupPath = leader.category === 'tsia2' ? 'angled-mockups-tier-2/' : 'angled-mockups-tier-1-propelx/';
             const tierPath = leader.category === 'tsia2' ? 'tier-2/' : 'tier-1-propelx/';
-
-            document.getElementById('modalCover').src = tierPath + leader.name + ' - Cover.jpg';
-            // Extract first name for foreword (file naming pattern)
             const firstName = leader.name.split(' ')[0];
-            document.getElementById('modalForeword').src = tierPath + firstName + ' - Foreword.jpg';
 
-            // Use cover as mockup
-            document.getElementById('modalMockupImg').src = tierPath + leader.name + ' - Cover.jpg';
+            // Set carousel images
+            document.getElementById('modalMockupImg').src = mockupPath + leader.name + ' - Angled Mockup.jpg';
+            document.getElementById('modalCoverImg').src = tierPath + leader.name + ' - Cover.jpg';
+            document.getElementById('modalForewordImg').src = tierPath + firstName + ' - Foreword.jpg';
 
+            // Reset to first slide
+            modalGoToSlide(0);
+
+            // Set up LinkedIn link
             const linkedInLink = document.getElementById('modalLinkedIn');
             if (leader.linkedIn) {
                 linkedInLink.href = leader.linkedIn;
+                linkedInLink.style.opacity = '1';
             } else {
                 linkedInLink.href = '#';
                 linkedInLink.style.opacity = '0.5';
+                linkedInLink.style.pointerEvents = 'none';
             }
+
+            // Set up button click handlers
+            const copyBtn = document.getElementById('modalCopyBtn');
+            const downloadBtn = document.getElementById('modalDownloadBtn');
+            const shareBtn = document.getElementById('modalShareBtn');
+            const slug = createSlug(leader.name);
+
+            copyBtn.onclick = () => copyOutreachTemplate(leader);
+            downloadBtn.onclick = () => downloadCover(leader);
+            shareBtn.onclick = () => window.location.href = 'leader.html?name=' + slug;
 
             modal.style.display = 'block';
         }
 
         function createLeaderCard(leader) {
             const tierPath = leader.category === 'tsia2' ? 'tier-2/' : 'tier-1-propelx/';
+            const mockupPath = leader.category === 'tsia2' ? 'angled-mockups-tier-2/' : 'angled-mockups-tier-1-propelx/';
+            const firstName = leader.name.split(' ')[0];
+            const slug = createSlug(leader.name);
 
             const card = document.createElement('div');
             card.className = 'leader-card';
+
+            // Store leader data as data attributes for safe access
+            card.dataset.leaderName = leader.name;
+            card.dataset.leaderCompany = leader.company;
+            card.dataset.leaderTitle = leader.title;
+            card.dataset.leaderCategory = leader.category;
+            card.dataset.leaderLinkedIn = leader.linkedIn || '';
+
             card.innerHTML = `
-                <div class="card-image-container" onclick="openLeaderModal({
-                    name: '${leader.name}',
-                    company: '${leader.company}',
-                    title: '${leader.title.replace(/'/g, "\\'")}',
-                    category: '${leader.category}',
-                    linkedIn: '${leader.linkedIn || ''}'
-                })">
+                <div class="card-image-container">
                     <div class="book-mockup-card">
-                        <div class="book-front-card">
-                            <img src="${tierPath}${leader.name} - Cover.jpg" alt="${leader.name}" class="card-image">
-                        </div>
-                        <div class="book-spine-card"></div>
+                        <img src="${mockupPath}${leader.name} - Angled Mockup.jpg" alt="${leader.name}" class="card-image">
                     </div>
                     <span class="card-tier-badge">${getCategoryLabel(leader.category)}</span>
                 </div>
                 <div class="card-content">
-                    <div class="card-name">${leader.name}</div>
-                    <div class="card-company">${leader.company}</div>
-                    <div class="card-title">${leader.title}</div>
+                    <div class="card-name">${escapeHtml(leader.name)}</div>
+                    <div class="card-company">${escapeHtml(leader.company)}</div>
+                    <div class="card-title">${escapeHtml(leader.title)}</div>
+                    <div class="card-rep"><strong>Rep:</strong> ${escapeHtml(leader.rep || 'Unassigned')}</div>
+                    <div class="card-quick-actions">
+                        <button class="quick-action-btn download-btn" title="Download book cover">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download Book Cover
+                        </button>
+                    </div>
                     <div class="card-actions">
-                        <div style="font-size: 0.75rem; color: var(--text-light); flex: 1; padding-top: 4px; font-weight: 500;">Click book to view</div>
-                        ${leader.linkedIn ? `<a href="${leader.linkedIn}" target="_blank" class="linkedin-icon-btn" title="View LinkedIn Profile"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>` : ''}
+                        <button class="quick-action-btn copy-btn" title="Copy outreach template">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            Copy Template
+                        </button>
+                        <a href="leader.html?name=${slug}" class="share-icon-btn" title="View personalized page">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="18" cy="5" r="3"></circle>
+                                <circle cx="6" cy="12" r="3"></circle>
+                                <circle cx="18" cy="19" r="3"></circle>
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                            </svg>
+                        </a>
+                        ${leader.linkedIn ? `<a href="${leader.linkedIn}" target="_blank" class="linkedin-icon-btn-small" title="View LinkedIn Profile"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>` : ''}
                     </div>
                 </div>
             `;
+
+            // Add event listeners after creating the card
+            const imageContainer = card.querySelector('.card-image-container');
+            const copyBtn = card.querySelector('.copy-btn');
+            const downloadBtn = card.querySelector('.download-btn');
+
+            imageContainer.addEventListener('click', () => openLeaderModal(leader));
+            copyBtn.addEventListener('click', () => copyOutreachTemplate(leader));
+            downloadBtn.addEventListener('click', () => downloadCover(leader));
+
             return card;
+        }
+
+        // Helper to escape HTML special characters
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
         }
 
         // Filter and search
