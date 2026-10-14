@@ -1005,11 +1005,11 @@
 
             // Set image paths
             const basePath = leader.category === 'tsia1' || leader.category === 'tsia2'
-                ? 'Tier 2 /'  // Will need to map properly
-                : 'Tier 1 + Propel X/';
+                ? 'tier-2/'
+                : 'tier-1-propelx/';
 
             // For now, load from Tier folders
-            const tierPath = leader.category === 'tsia1' ? 'Tier 1 + Propel X/' : 'Tier 2 /';
+            const tierPath = leader.category === 'tsia1' ? 'tier-1-propelx/' : 'tier-2/';
 
             document.getElementById('modalCover').src = tierPath + leader.name + ' - Cover.jpg';
             // Extract first name for foreword (file naming pattern)
@@ -1031,7 +1031,7 @@
         }
 
         function createLeaderCard(leader) {
-            const tierPath = leader.category === 'tsia1' ? 'Tier 1 + Propel X/' : 'Tier 2 /';
+            const tierPath = leader.category === 'tsia1' ? 'tier-1-propelx/' : 'tier-2/';
 
             const card = document.createElement('div');
             card.className = 'leader-card';
