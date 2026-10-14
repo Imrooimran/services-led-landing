@@ -15,7 +15,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         :root {
             --rl-blue: #1E5AB8;
             --rl-blue-dark: #0A2540;
@@ -117,10 +117,10 @@
         }
 
         h1 {
-            font-size: 4.2rem;
+            font-size: clamp(2rem, 8vw, 4.2rem);
             font-weight: 600;
             margin-bottom: 20px;
-            line-height: 1.1;
+            line-height: 1.2;
             letter-spacing: -0.8px;
             font-family: 'Geist', sans-serif;
             background: linear-gradient(120deg, #FFFFFF 0%, #E8F0FE 100%);
@@ -130,11 +130,12 @@
         }
 
         .subtitle {
-            font-size: 1.15rem;
+            font-size: clamp(1rem, 3vw, 1.15rem);
             opacity: 0.92;
             max-width: 700px;
-            font-weight: 350;
+            font-weight: 400;
             line-height: 1.8;
+            letter-spacing: 0.3px;
             color: rgba(255, 255, 255, 0.95);
         }
 
@@ -203,11 +204,14 @@
             background: var(--rl-gray-50);
             font-family: 'Geist', sans-serif;
             font-weight: 500;
+            min-height: 48px;
+            line-height: 1.5;
         }
 
         .search-box::placeholder {
             color: var(--rl-gray-400);
-            font-weight: 500;
+            font-weight: 400;
+            opacity: 0.8;
         }
 
         .search-box:focus {
@@ -215,6 +219,11 @@
             border-color: var(--rl-blue);
             background: white;
             box-shadow: 0 0 0 5px rgba(30, 90, 184, 0.1);
+        }
+
+        .search-box:focus-visible {
+            outline: 2px solid var(--rl-blue);
+            outline-offset: 2px;
         }
 
         .filter-group {
@@ -234,6 +243,11 @@
             font-weight: 600;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             font-family: 'Geist', sans-serif;
+            min-height: 48px;
+            line-height: 1.4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .filter-btn:hover {
@@ -241,6 +255,16 @@
             color: var(--rl-blue);
             background: rgba(30, 90, 184, 0.04);
             transform: translateY(-2px);
+        }
+
+        .filter-btn:focus {
+            outline: 2px solid var(--rl-blue);
+            outline-offset: 2px;
+        }
+
+        .filter-btn:focus-visible {
+            outline: 2px solid var(--rl-blue);
+            outline-offset: 2px;
         }
 
         .filter-btn.active {
