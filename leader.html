@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services Led - Personalized Edition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="data.js"></script>
+    <script src="tracking.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --rl-blue: #1E5AB8;
+            --rl-blue-dark: #0A2540;
+            --rl-blue-light: #3B7FDF;
+            --rl-accent: #FF6B35;
+            --rl-gray-50: #F8FAFC;
+            --rl-gray-100: #F1F5F9;
+            --rl-gray-200: #E2E8F0;
+            --rl-gray-300: #CBD5E1;
+            --text-dark: #0F172A;
+            --text-light: #64748B;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            pointer-events: none;
+            animation: confetti-fall 3s ease-in forwards;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .thank-you-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .thank-you-overlay.active {
+            display: flex;
+        }
+
+        .thank-you-content {
+            background: white;
+            border-radius: 16px;
+            padding: 60px 40px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .thank-you-content h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--rl-blue);
+            margin-bottom: 16px;
+        }
+
+        .thank-you-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .thank-you-content .form-btn {
+            width: auto;
+            padding: 14px 40px;
+        }
+
+        body {
+            font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--rl-gray-50);
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--rl-blue-dark) 0%, var(--rl-blue) 100%);
+            background-image: url('./vegas-hero.png');
+            background-size: cover;
+            background-position: center bottom;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: white;
+            padding: 100px 20px;
+            margin-bottom: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: transparent;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 100px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .back-link {
+            display: none;
+        }
+
+        .back-to-hub {
+            display: none;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.92;
+            max-width: 600px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-bottom: 120px;
+        }
+
+        .book-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .book-mockup {
+            position: relative;
+            width: 350px;
+            height: 520px;
+            transform-style: preserve-3d;
+            transform: rotateY(-10deg) rotateX(2deg);
+            filter: drop-shadow(25px 30px 60px rgba(0, 0, 0, 0.2))
+                    drop-shadow(12px 15px 30px rgba(0, 0, 0, 0.1));
+            margin-bottom: 40px;
+        }
+
+        .book-mockup-simple {
+            position: relative;
+            width: 500px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            margin: 0 auto 40px;
+            filter: drop-shadow(30px 30px 60px rgba(0, 0, 0, 0.2))
+                    drop-shadow(15px 15px 30px rgba(0, 0, 0, 0.1));
+        }
+
+        .book-cover-simple {
+            position: relative;
+            width: 280px;
+            height: 400px;
+            background: white;
+            border-radius: 4px 0 0 4px;
+            overflow: hidden;
+            box-shadow: inset -8px 0 16px rgba(0, 0, 0, 0.08);
+            transform-origin: right center;
+            transform: perspective(800px) rotateY(12deg);
+        }
+
+        .book-cover-simple img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .book-foreword-simple {
+            position: relative;
+            width: 220px;
+            height: 400px;
+            background: white;
+            border-radius: 0 4px 4px 0;
+            overflow: hidden;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .book-foreword-simple img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: none;
+            margin: 0 auto 40px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .carousel-arrow {
+            position: relative;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: none;
+            background: var(--rl-blue);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            flex-shrink: 0;
+            z-index: 10;
+        }
+
+        .carousel-arrow:hover {
+            background: var(--rl-blue-light);
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(30, 90, 184, 0.3);
+        }
+
+        .carousel-arrow svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .carousel-arrow-left {
+            order: -1;
+        }
+
+        .carousel-arrow-right {
+            display: flex;
+        }
+
+        .book-carousel {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .carousel-slide {
+            display: none;
+            width: 100%;
+        }
+
+        .carousel-slide.active {
+            display: block;
+        }
+
+        .carousel-slide.active {
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .carousel-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+            aspect-ratio: 2/3;
+            object-fit: cover;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .carousel-image:hover {
+            box-shadow: 0 24px 72px rgba(0, 0, 0, 0.3);
+            transform: translateY(-6px);
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+
+        .indicator-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #6B7280;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            letter-spacing: 0.2px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: transparent;
+        }
+
+        .indicator-label:hover {
+            background: var(--rl-gray-100);
+            color: var(--rl-blue);
+        }
+
+        .indicator {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #9CA3AF;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .indicator:hover {
+            background: #6B7280;
+            transform: scale(1.2);
+        }
+
+        .indicator.active {
+            background: var(--rl-blue);
+            width: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(30, 90, 184, 0.3);
+        }
+
+        .book-front {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 2;
+            transform-style: preserve-3d;
+            border-radius: 8px 12px 12px 8px;
+            overflow: hidden;
+            box-shadow: inset -12px 0 24px rgba(0, 0, 0, 0.12),
+                        -4px 0 8px rgba(0, 0, 0, 0.25);
+        }
+
+        .book-front::before {
+            content: '';
+            position: absolute;
+            right: -20px;
+            top: 0;
+            width: 20px;
+            height: 100%;
+            background: linear-gradient(90deg, #f9f9f9 0%, #ececec 100%);
+            transform: rotateY(-75deg);
+            transform-origin: right center;
+            transform-style: preserve-3d;
+            box-shadow: inset 3px 0 6px rgba(0, 0, 0, 0.12);
+        }
+
+        .book-front::after {
+            content: '';
+            position: absolute;
+            right: -15px;
+            top: 2px;
+            width: 15px;
+            height: 100%;
+            background: linear-gradient(90deg, #f0f0f0 0%, #d5d5d0 100%);
+            z-index: -1;
+            box-shadow: inset -2px 0 3px rgba(0, 0, 0, 0.15);
+        }
+
+        .book-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .leader-info {
+            text-align: left;
+        }
+
+        .info-header {
+            margin-bottom: 40px;
+        }
+
+        .leader-name {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .leader-company {
+            font-size: 1rem;
+            color: var(--rl-blue);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .leader-title {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .leader-category {
+            display: inline-block;
+            background: rgba(30, 90, 184, 0.1);
+            color: var(--rl-blue);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 40px;
+        }
+
+        .cta-text {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            line-height: 1.4;
+            color: var(--text-dark);
+        }
+
+        .cta-text em {
+            color: var(--rl-accent);
+            font-style: normal;
+        }
+
+        .premium-message {
+            background: linear-gradient(135deg, var(--rl-gray-50) 0%, rgba(30, 90, 184, 0.05) 100%);
+            border-left: 4px solid var(--rl-blue);
+            padding: 24px 28px;
+            border-radius: 8px;
+            margin: 40px 0;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .premium-message p {
+            margin: 0;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 40px;
+        }
+
+        .cta-btn {
+            padding: 16px 28px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+            text-align: center;
+            letter-spacing: 0.3px;
+            font-family: 'Geist', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .cta-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .cta-btn-primary {
+            background: linear-gradient(135deg, var(--rl-blue) 0%, var(--rl-blue-light) 100%);
+            color: white;
+            box-shadow: 0 8px 24px rgba(30, 90, 184, 0.3);
+        }
+
+        .cta-btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(30, 90, 184, 0.4);
+        }
+
+        .cta-btn-secondary {
+            background: white;
+            color: var(--rl-blue);
+            border: 2px solid var(--rl-blue);
+        }
+
+        .cta-btn-secondary:hover {
+            background: var(--rl-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .linkedin-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 24px;
+            background: #0A66C2;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            font-family: 'Geist', sans-serif;
+        }
+
+        .linkedin-btn:hover {
+            background: #084B95;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(10, 102, 194, 0.3);
+        }
+
+        .linkedin-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        .event-info {
+            background: linear-gradient(135deg, #FFFFFF 0%, var(--rl-gray-50) 100%);
+            padding: 44px;
+            border-radius: 16px;
+            border: 2px solid var(--rl-blue);
+            margin-top: 50px;
+            box-shadow: 0 8px 32px rgba(30, 90, 184, 0.08);
+        }
+
+        .event-info h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--rl-blue);
+            letter-spacing: 0.2px;
+        }
+
+        .event-speaker {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 28px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--rl-gray-200);
+        }
+
+        .speaker-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .speaker-info {
+            flex: 1;
+        }
+
+        .speaker-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .speaker-title {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--text-light);
+        }
+
+        .event-info p {
+            font-size: 1rem;
+            color: var(--text-dark);
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .form-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-modal.active {
+            display: flex;
+        }
+
+        .form-modal-content {
+            background: white;
+            border-radius: 16px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 32px;
+            border-bottom: 1px solid var(--rl-gray-200);
+        }
+
+        .form-modal-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin: 0;
+        }
+
+        .form-close-btn {
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--text-light);
+            cursor: pointer;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-close-btn:hover {
+            color: var(--text-dark);
+        }
+
+        .form-modal-body {
+            padding: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--rl-gray-200);
+            border-radius: 8px;
+            font-family: 'Geist', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--rl-blue);
+            box-shadow: 0 0 0 3px rgba(30, 90, 184, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--rl-blue);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .form-btn:hover {
+            background: var(--rl-blue-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(30, 90, 184, 0.3);
+        }
+
+        .back-to-hub {
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid var(--rl-gray-200);
+            margin-top: 120px;
+        }
+
+        .back-to-hub a {
+            display: inline-block;
+            padding: 14px 32px;
+            background: white;
+            color: var(--rl-blue);
+            border: 2px solid var(--rl-blue);
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-family: 'Geist', sans-serif;
+        }
+
+        .back-to-hub a:hover {
+            background: var(--rl-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .error-message {
+            text-align: center;
+            padding: 120px 20px;
+        }
+
+        .error-message h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .error-message p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .book-carousel {
+                grid-template-columns: 1fr;
+            }
+
+            .book-mockup {
+                width: 250px;
+                height: 380px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .cta-text {
+                font-size: 1.2rem;
+            }
+
+            .leader-name {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="rocketlane-logo.webp" alt="Rocketlane">
+            </div>
+            <h1 id="pageTitle">Services Led</h1>
+            <p class="subtitle" id="pageSubtitle">A personalized edition celebrating your leadership in services</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="content" id="leaderContent">
+            <!-- Populated by JavaScript -->
+        </div>
+    </div>
+
+    <div class="back-to-hub">
+        <a href="index.html">← View All Leaders</a>
+    </div>
+
+    <script>
+        // Get leader name from URL
+        function getLeaderFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('name');
+        }
+
+        let currentSlideIndex = 0;
+
+        function goToSlide(index) {
+            const slides = document.querySelectorAll('.carousel-slide');
+            if (!slides.length) return;
+
+            // Wrap around if index is out of bounds
+            currentSlideIndex = (index + slides.length) % slides.length;
+            const indicators = document.querySelectorAll('.indicator');
+
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === currentSlideIndex);
+            });
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('active', i === currentSlideIndex);
+            });
+        }
+
+        function nextSlide() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            goToSlide(currentSlideIndex + 1);
+        }
+
+        function prevSlide() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            goToSlide(currentSlideIndex - 1);
+        }
+
+        function initializePage() {
+            try {
+                const slug = getLeaderFromURL();
+                if (!slug) {
+                    showError('No leader selected. Please go back and click on a leader.');
+                    return;
+                }
+
+                const leader = getLeaderBySlug(slug);
+                if (!leader) {
+                    showError(`Leader not found. Slug: ${slug}`);
+                    console.warn('Available leaders:', leadersData.map(l => l.name));
+                    return;
+                }
+
+                renderLeaderPage(leader);
+            } catch (error) {
+                console.error('Page initialization error:', error);
+                showError('An error occurred while loading the page.');
+            }
+        }
+
+        function renderLeaderPage(leader) {
+            const tierPath = leader.category === 'tsia2' ? 'tier-2/' : 'tier-1-propelx/';
+            const firstName = leader.name.split(' ')[0];
+            const categoryLabel = getCategoryLabel(leader.category);
+            const mockupPath = leader.category === 'tsia2' ? 'angled-mockups-tier-2/' : 'angled-mockups-tier-1-propelx/';
+
+            document.title = `${leader.name} - Services Led`;
+            document.getElementById('pageTitle').textContent = `We featured you in Services Led—Claim your physical copy at TSIA!`;
+
+            const contentHTML = `
+                <div class="book-section">
+                    <div class="carousel-container">
+                        <button class="carousel-arrow carousel-arrow-left" onclick="prevSlide()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+                        <div class="book-carousel">
+                            <div class="carousel-slide active">
+                                <img src="${mockupPath}${leader.name} - Angled Mockup.jpg" alt="${leader.name} - Angled Book Mockup" class="carousel-image">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="${tierPath}${leader.name} - Cover.jpg" alt="Book Cover" class="carousel-image">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="${tierPath}${firstName} - Foreword.jpg" alt="Foreword" class="carousel-image" onerror="this.style.display='none'">
+                            </div>
+                        </div>
+                        <button class="carousel-arrow carousel-arrow-right" onclick="nextSlide()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="carousel-indicators">
+                        <div class="indicator-label" onclick="goToSlide(0)">Book Mockup</div>
+                        <div class="indicator-label" onclick="goToSlide(1)">Book Cover</div>
+                        <div class="indicator-label" onclick="goToSlide(2)">Foreword</div>
+                    </div>
+                </div>
+
+                <div class="leader-info">
+                    <div class="info-header">
+                        <div class="leader-name">${leader.name}</div>
+                        <div class="leader-company">${leader.company}</div>
+                        <div class="leader-title">${leader.title}</div>
+                    </div>
+
+                    <div class="cta-text">
+                        We created something special for you, <em>${firstName}</em>. A custom edition of <strong>Services Led</strong> featuring your leadership at <em>${leader.company}</em>.
+                    </div>
+
+                    <div class="premium-message">
+                        <p>This isn't just another book. It's a recognition of how you're transforming services delivery and driving customer success at industry scale.</p>
+                    </div>
+
+                    <div class="cta-buttons">
+                        <button class="cta-btn cta-btn-primary" onclick="openClaimForm('${leader.name}')">
+                            <svg class="cta-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
+                            </svg>
+                            Claim at TSIA Booth
+                        </button>
+                        <button class="cta-btn cta-btn-secondary" onclick="openShipForm('${leader.name}')">
+                            <svg class="cta-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 18.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0M1.5 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                            </svg>
+                            Ship to My Office
+                        </button>
+                    </div>
+
+
+                    <div class="event-info">
+                        <h3>✨ Meet Us at TSIA</h3>
+                        <div class="event-speaker">
+                            <img src="srikrishnan-ganeshan.png" alt="Srikrishnan Ganeshan, Rocketlane CEO" class="speaker-photo">
+                            <div class="speaker-info">
+                                <div class="speaker-name">Srikrishnan Ganeshan</div>
+                                <div class="speaker-title">Co-founder & CEO, Rocketlane</div>
+                            </div>
+                        </div>
+                        <p>Find Srikrishnan at our booth in Vegas. We'll hand you your personalized "Services Led" copy and discuss how leaders like you are reimagining services delivery.</p>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('leaderContent').innerHTML = contentHTML;
+
+            // Activate first carousel slide
+            const firstSlide = document.querySelector('.carousel-slide');
+            const firstIndicator = document.querySelector('.indicator');
+            if (firstSlide) firstSlide.classList.add('active');
+            if (firstIndicator) firstIndicator.classList.add('active');
+        }
+
+        function claimAtTSIA(name) {
+            // Track the click
+            CTATracker.trackClick(name, 'claim', {
+                action: 'Claim at TSIA Booth',
+                value: 'tsia_booth'
+            });
+
+            // Show confirmation
+            alert('Thank you! Please visit the Rocketlane booth at TSIA to claim your personalized "Services Led" copy. We\'re looking forward to connecting with you!');
+
+            // Optional: Send to CRM/email service
+            // sendToCRM(name, 'claim');
+        }
+
+        function shipToOffice(name) {
+            // Track the click
+            CTATracker.trackClick(name, 'ship', {
+                action: 'Ship to My Office',
+                value: 'ship_office'
+            });
+
+            const firstName = name.split(' ')[0];
+            const message = `Hi ${firstName}, we'd like to ship your personalized "Services Led" copy to your office. Please share your mailing address so we can get this to you!`;
+            alert(message + '\n\nThis functionality would typically connect to your CRM or mailing system.');
+
+            // Optional: Send to CRM/email service
+            // sendToCRM(name, 'ship');
+        }
+
+
+        function showError(message) {
+            const errorHTML = `
+                <div class="error-message">
+                    <h2>Oops! ${message}</h2>
+                    <p>The leader you're looking for couldn't be found.</p>
+                    <a href="index.html" class="cta-btn cta-btn-primary" style="display: inline-block;">← Back to All Leaders</a>
+                </div>
+            `;
+            document.getElementById('leaderContent').innerHTML = errorHTML;
+        }
+
+        // CTA form handling
+        function openClaimForm(leaderName) {
+            const formModal = document.getElementById('formModal');
+            document.getElementById('formTitle').textContent = `Claim your copy at TSIA`;
+            document.getElementById('claimForm').style.display = 'block';
+            document.getElementById('shipForm').style.display = 'none';
+            document.getElementById('formModal').dataset.type = 'claim';
+            document.getElementById('formModal').dataset.name = leaderName;
+            formModal.style.display = 'block';
+        }
+
+        function openShipForm(leaderName) {
+            const formModal = document.getElementById('formModal');
+            document.getElementById('formTitle').textContent = `Ship to my office`;
+            document.getElementById('claimForm').style.display = 'none';
+            document.getElementById('shipForm').style.display = 'block';
+            document.getElementById('formModal').dataset.type = 'ship';
+            document.getElementById('formModal').dataset.name = leaderName;
+            formModal.style.display = 'block';
+        }
+
+        function closeForm() {
+            document.getElementById('formModal').style.display = 'none';
+        }
+
+        function submitForm(type) {
+            const name = document.getElementById('formModal').dataset.name;
+            if (type === 'claim') {
+                const email = document.getElementById('claimEmail').value;
+                if (!email) {
+                    alert('Please enter your email');
+                    return;
+                }
+                CTATracker.trackClick(name, 'claim', { email });
+                closeForm();
+                showThankYou('claim', name);
+            } else {
+                const email = document.getElementById('shipEmail').value;
+                const phone = document.getElementById('shipPhone').value;
+                const street = document.getElementById('shipStreet').value;
+                const city = document.getElementById('shipCity').value;
+                const state = document.getElementById('shipState').value;
+                const zip = document.getElementById('shipZip').value;
+                const country = document.getElementById('shipCountry').value;
+
+                if (!email || !phone || !street || !city || !state || !zip || !country) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+
+                const fullAddress = `${street}, ${city}, ${state} ${zip}, ${country}`;
+                CTATracker.trackClick(name, 'ship', { email, phone, address: fullAddress });
+                closeForm();
+                showThankYou('ship', name);
+            }
+        }
+
+        function createConfetti() {
+            const colors = ['#1E5AB8', '#FF6B35', '#F1F5F9', '#0A2540', '#3B7FDF'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 0.3 + 's';
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 3300);
+            }
+        }
+
+        function showThankYou(type, name) {
+            const overlay = document.getElementById('thankYouOverlay');
+            const titleEl = document.getElementById('thankYouTitle');
+            const messageEl = document.getElementById('thankYouMessage');
+
+            if (type === 'claim') {
+                titleEl.textContent = '🎉 Thank You!';
+                messageEl.textContent = 'See you at the Rocketlane booth at TSIA! We can\'t wait to celebrate your leadership with you.';
+            } else {
+                titleEl.textContent = '🎉 Thank You!';
+                messageEl.textContent = 'Your personalized "Services Led" copy is on its way! We\'ll ship it out shortly and you should receive it within 7-10 business days.';
+            }
+
+            overlay.classList.add('active');
+            createConfetti();
+        }
+
+        function closeThankYou() {
+            document.getElementById('thankYouOverlay').classList.remove('active');
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', initializePage);
+    </script>
+
+    <!-- Form Modal -->
+    <div id="formModal" class="form-modal">
+        <div class="form-modal-content">
+            <div class="form-modal-header">
+                <h2 id="formTitle">Claim your copy</h2>
+                <button class="form-close-btn" onclick="closeForm()">&times;</button>
+            </div>
+            <div class="form-modal-body">
+                <!-- Claim Form -->
+                <form id="claimForm">
+                    <div class="form-group">
+                        <label for="claimEmail">Email *</label>
+                        <input type="email" id="claimEmail" placeholder="your@email.com" required>
+                    </div>
+                    <button type="button" class="form-btn" onclick="submitForm('claim')">Confirm</button>
+                </form>
+
+                <!-- Ship Form -->
+                <form id="shipForm" style="display:none;">
+                    <div class="form-group">
+                        <label for="shipEmail">Email *</label>
+                        <input type="email" id="shipEmail" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="shipPhone">Phone Number *</label>
+                        <input type="tel" id="shipPhone" placeholder="+1 (555) 123-4567" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="shipStreet">Street Address *</label>
+                        <input type="text" id="shipStreet" placeholder="123 Main St, Suite 100" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="shipCity">City *</label>
+                        <input type="text" id="shipCity" placeholder="New York" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="shipState">State/Province *</label>
+                        <input type="text" id="shipState" placeholder="NY" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="shipZip">ZIP/Postal Code *</label>
+                        <input type="text" id="shipZip" placeholder="10001" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="shipCountry">Country *</label>
+                        <input type="text" id="shipCountry" placeholder="United States" required>
+                    </div>
+                    <button type="button" class="form-btn" onclick="submitForm('ship')">Confirm</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thank You Overlay with Confetti -->
+    <div id="thankYouOverlay" class="thank-you-overlay">
+        <div class="thank-you-content">
+            <h2 id="thankYouTitle">🎉 Thank You!</h2>
+            <p id="thankYouMessage">Thank you for your submission!</p>
+            <button class="form-btn" onclick="closeThankYou()">Back to Profile</button>
+        </div>
+    </div>
+</body>
+</html>
