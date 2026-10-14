@@ -1003,12 +1003,7 @@
             document.getElementById('modalCategory').textContent = getCategoryLabel(leader.category);
 
             // Set image paths
-            const basePath = leader.category === 'tsia1' || leader.category === 'tsia2'
-                ? 'tier-2/'
-                : 'tier-1-propelx/';
-
-            // For now, load from Tier folders
-            const tierPath = leader.category === 'tsia1' ? 'tier-1-propelx/' : 'tier-2/';
+            const tierPath = leader.category === 'tsia2' ? 'tier-2/' : 'tier-1-propelx/';
 
             document.getElementById('modalCover').src = tierPath + leader.name + ' - Cover.jpg';
             // Extract first name for foreword (file naming pattern)
@@ -1030,7 +1025,7 @@
         }
 
         function createLeaderCard(leader) {
-            const tierPath = leader.category === 'tsia1' ? 'tier-1-propelx/' : 'tier-2/';
+            const tierPath = leader.category === 'tsia2' ? 'tier-2/' : 'tier-1-propelx/';
 
             const card = document.createElement('div');
             card.className = 'leader-card';
