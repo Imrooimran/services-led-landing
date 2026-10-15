@@ -13,7 +13,7 @@ const leadersData = [
     { name: 'Marc Winans', category: 'tsia1', company: 'Hitachi Vantara', title: 'Director Global Services Delivery Enablement', linkedIn: 'https://linkedin.com/in/marc-winans-9a72941', rep: 'Matt Lyman' },
     { name: 'Mayowa Ige', category: 'tsia1', company: 'OneTrust', title: 'VP, delivery Services', linkedIn: 'https://linkedin.com/in/mayowa-ige-12060860', rep: 'Matt Lyman' },
     { name: 'Monique Rupert', category: 'tsia1', company: 'Blue Yonder', title: 'Global SVP Professional Services', linkedIn: 'https://www.linkedin.com/in/moniquerupert', rep: 'Gil Ramirez' },
-    { name: 'Nick Blades', category: 'tsia1', company: 'OneStream Software', title: 'SVP, Consulting Services', linkedIn: 'https://www.linkedin.com/in/nick-blades-a4a29aa', rep: 'Andy Cagle' },
+    { name: 'Nicholas Blades', category: 'tsia1', company: 'OneStream Software', title: 'SVP, Consulting Services', linkedIn: 'https://www.linkedin.com/in/nick-blades-a4a29aa', rep: 'Andy Cagle' },
     { name: 'Paul Yaros', category: 'tsia1', company: 'Anaqua', title: 'Chief Customer Officer', linkedIn: 'https://www.linkedin.com/in/paulyaros', rep: 'Anders Capener' },
     { name: 'Robert DelPonte', category: 'tsia1', company: 'UKG', title: 'EVP, Chief Customer Experience Officer', linkedIn: 'https://www.linkedin.com/in/bob-delponte-1b6704/', rep: 'Matt Lyman' },
     { name: 'Sebastien Gagne', category: 'tsia1', company: 'Coveo', title: 'Senior Director, Professional Services', linkedIn: 'https://www.linkedin.com/in/gagnesebastien', rep: 'Sarah Warner' },
@@ -75,17 +75,17 @@ const leadersData = [
     { name: 'Tiago Eliseu', category: 'tsia2', company: 'Outsystems', title: 'Director, Professional Services', linkedIn: 'https://www.linkedin.com/in/tiago-eliseu/', rep: 'Andy Cagle' },
     { name: 'Tonia Whitton', category: 'tsia2', company: 'Vertex Inc.', title: 'VP, Global Professional Services', linkedIn: 'https://www.linkedin.com/in/tonia-whitton-b95678', rep: 'Stephen Colomay' },
     { name: 'Yogesh Jankee', category: 'tsia2', company: 'Dayforce, Inc.', title: 'VP of President Services', linkedIn: 'https://www.linkedin.com/in/yogeshjankee', rep: 'Jessica Langrock' },
-    // PropelX (10 leaders)
-    { name: 'Gerard Allen', category: 'propelx', company: 'SailPoint', title: 'SVP Global Services', linkedIn: 'https://linkedin.com/in/gerard-allen', rep: 'Add Rep Name' },
-    { name: 'Grant Watling', category: 'propelx', company: 'LogicMonitor', title: 'VP Global Services', linkedIn: 'https://linkedin.com/in/grantwatling', rep: 'Add Rep Name' },
-    { name: 'Hendrik Zondag', category: 'propelx', company: 'SolarWinds', title: 'VP Professional Services', linkedIn: 'https://linkedin.com/in/hendrik-zondag', rep: 'Add Rep Name' },
-    { name: 'Kerri Geddes', category: 'propelx', company: 'UiPath', title: 'VP Professional Services', linkedIn: 'https://linkedin.com/in/kerri-geddes', rep: 'Add Rep Name' },
-    { name: 'Liam Miner', category: 'propelx', company: 'ServiceTitan', title: 'Director Services', linkedIn: 'https://linkedin.com/in/liamminer', rep: 'Add Rep Name' },
-    { name: 'Olivier Laarhoven', category: 'propelx', company: 'Avalara', title: 'VP Global Services', linkedIn: 'https://linkedin.com/in/olivier-laarhoven', rep: 'Add Rep Name' },
-    { name: 'Rui Vieira', category: 'propelx', company: 'OutSystems', title: 'VP Professional Services', linkedIn: 'https://linkedin.com/in/ruivieira', rep: 'Add Rep Name' },
-    { name: 'Steff Johnston', category: 'propelx', company: 'Varonis', title: 'Director Professional Services', linkedIn: 'https://linkedin.com/in/steff-johnston', rep: 'Add Rep Name' },
-    { name: 'Sukanya Kuppuswamy', category: 'propelx', company: 'Thought Industries', title: 'VP Professional Services', linkedIn: 'https://linkedin.com/in/sukanya-kuppuswamy', rep: 'Add Rep Name' },
-    { name: 'Vidya Macleod', category: 'propelx', company: 'Okta', title: 'Director Customer Success', linkedIn: 'https://linkedin.com/in/vidya-macleod', rep: 'Add Rep Name' }
+    // ProPelX - Services Led Round (10 leaders)
+    { name: 'Sukanya Kuppuswamy', category: 'propelx', company: 'Chargebee', title: 'Vice President, Shared Services', linkedIn: 'https://linkedin.com/in/sukanya-kuppuswamy', rep: 'Add Rep Name' },
+    { name: 'Steff Johnston', category: 'propelx', company: 'CloudPay', title: 'Vice President, Global Implementation', linkedIn: 'https://linkedin.com/in/steff-johnston', rep: 'Add Rep Name' },
+    { name: 'Liam Miner', category: 'propelx', company: 'Contentsquare', title: 'Vice President of Professional Services', linkedIn: 'https://linkedin.com/in/liamminer', rep: 'Add Rep Name' },
+    { name: 'Gerard Allen', category: 'propelx', company: 'Jamf', title: 'Vice President of Professional Services', linkedIn: 'https://linkedin.com/in/gerard-allen', rep: 'Add Rep Name' },
+    { name: 'Grant Watling', category: 'propelx', company: 'Hg', title: 'Portfolio Chief Customer Officer', linkedIn: 'https://linkedin.com/in/grantwatling', rep: 'Add Rep Name' },
+    { name: 'Olivier Laarhoven', category: 'propelx', company: 'Adyen', title: 'Head of Professional Services Excellence', linkedIn: 'https://linkedin.com/in/olivier-laarhoven', rep: 'Add Rep Name' },
+    { name: 'Kerri Geddes', category: 'propelx', company: 'simPRO', title: 'Director of Global Professional Services', linkedIn: 'https://linkedin.com/in/kerri-geddes', rep: 'Add Rep Name' },
+    { name: 'Vidya Macleod', category: 'propelx', company: 'Basware', title: 'Director, Advisory Services', linkedIn: 'https://linkedin.com/in/vidya-macleod', rep: 'Add Rep Name' },
+    { name: 'Hendrik Zondag', category: 'propelx', company: 'BlueRock TMS', title: 'Practice Director, Operations', linkedIn: 'https://linkedin.com/in/hendrik-zondag', rep: 'Add Rep Name' },
+    { name: 'Rui Vieira', category: 'propelx', company: 'Cision', title: 'Director of Technology and Professional Services', linkedIn: 'https://linkedin.com/in/ruivieira', rep: 'Add Rep Name' }
 ];
 
 // Helper function to get leader by name slug
