@@ -59,6 +59,9 @@ const leadersData = [
     { name: 'Tiago Eliseu', category: 'tsia2', company: 'Outsystems', title: 'Director, Professional Services', linkedIn: 'https://www.linkedin.com/in/tiago-eliseu/', rep: 'Andy Cagle' },
     { name: 'Tonia Whitton', category: 'tsia2', company: 'Vertex Inc.', title: 'VP, Global Professional Services', linkedIn: 'https://www.linkedin.com/in/tonia-whitton-b95678', rep: 'Stephen Colomay' },
     { name: 'Yogesh Jankee', category: 'tsia2', company: 'Dayforce, Inc.', title: 'VP of President Services', linkedIn: 'https://www.linkedin.com/in/yogeshjankee', rep: 'Jessica Langrock' },
+    { name: 'Gregorie Dejonckheere', category: 'tsia2', company: 'Nasdaq', title: 'VP, Client Services', linkedIn: '', rep: 'Andy Cagle' },
+    { name: 'Jackie Todd', category: 'tsia2', company: 'Avertium', title: 'Sr Director Resource Management and Delivery Operations', linkedIn: '', rep: 'Anders Capener' },
+    { name: 'Jeff Burkhart', category: 'tsia2', company: 'Igt', title: 'Sr. Director - Delivery Services', linkedIn: '', rep: 'Matt Lyman' },
     // ProPelX - Services Led Round (10 leaders)
     { name: 'Sukanya Kuppuswamy', category: 'propelx', company: 'Chargebee', title: 'Vice President, Shared Services', linkedIn: 'https://www.linkedin.com/in/sukanya-kuppuswamy', rep: 'Tanner DeVinny' },
     { name: 'Steff Johnston', category: 'propelx', company: 'CloudPay', title: 'Vice President, Global Implementation', linkedIn: 'https://www.linkedin.com/in/steff-johnston-2470b56', rep: 'Jack Griggs' },
