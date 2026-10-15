@@ -448,19 +448,20 @@
 
         .card-tier-badge {
             position: absolute;
-            top: 12px;
-            right: 12px;
+            top: 8px;
+            right: 8px;
             background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(8px);
             color: white;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.65rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.55rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            letter-spacing: 0.4px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
             border: 1px solid rgba(255, 255, 255, 0.15);
+            z-index: 10;
         }
 
         .card-content {
@@ -803,6 +804,118 @@
         }
 
         /* Mobile: Hide modal on mobile, use direct navigation */
+        /* Show carousel on all screen sizes */
+        /* Carousel at top of card (replaces mockup) */
+        .card-carousel-top {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: visible;
+            border-radius: 12px;
+            background: #f5f5f5;
+            display: flex !important;
+        }
+
+        .card-carousel-top .carousel-slide-card {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .card-carousel-top .carousel-slide-card.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .card-carousel-top .carousel-slide-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* First slide (mockup) - fill the frame */
+        .card-carousel-top .carousel-slide-card:nth-child(2) img {
+            object-fit: cover;
+        }
+
+        .card-carousel-top .carousel-dots-card {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+            z-index: 10;
+        }
+
+        .card-carousel-top .carousel-dot-card {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: none;
+        }
+
+        .card-carousel-top .carousel-dot-card:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .card-carousel-top .carousel-dot-card.active {
+            background: white;
+            width: 10px;
+            border-radius: 2px;
+            box-shadow: none;
+        }
+
+        .carousel-nav-btn {
+            position: absolute;
+            bottom: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
+            color: rgba(0, 0, 0, 0.6);
+            font-size: 12px;
+            width: 18px;
+            height: 18px;
+            border-radius: 2px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            z-index: 5;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .carousel-nav-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+            color: #000;
+        }
+
+        .carousel-prev-btn {
+            left: 50%;
+            transform: translateX(calc(-100% - 30px));
+        }
+
+        .carousel-next-btn {
+            right: 50%;
+            transform: translateX(calc(100% + 30px));
+        }
+
+
+        .card-carousel {
+            display: flex !important;
+        }
+
         @media (max-width: 768px) {
             .modal {
                 display: none !important;
@@ -829,55 +942,69 @@
                 display: none;
                 position: relative;
                 width: 100%;
-                height: 300px;
+                height: 280px;
                 overflow: hidden;
-                border-radius: 8px;
+                border-radius: 12px;
                 margin-top: 12px;
-                background: #f0f0f0;
+                background: #f5f5f5;
             }
 
             .carousel-slide-card {
                 position: absolute;
+                top: 0;
+                left: 0;
                 width: 100%;
                 height: 100%;
                 opacity: 0;
-                transition: opacity 0.6s ease-in-out;
+                transition: opacity 0.5s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 12px;
             }
 
             .carousel-slide-card.active {
                 opacity: 1;
+                z-index: 1;
             }
 
             .carousel-slide-card img {
-                width: 100%;
-                height: 100%;
+                max-width: 100%;
+                max-height: 100%;
+                width: auto;
+                height: auto;
                 object-fit: contain;
-                background: #f9f9f9;
             }
 
             .carousel-dots-card {
                 position: absolute;
-                bottom: 12px;
+                bottom: 10px;
                 left: 50%;
                 transform: translateX(-50%);
                 display: flex;
-                gap: 6px;
+                gap: 5px;
                 z-index: 10;
             }
 
             .carousel-dot-card {
-                width: 8px;
-                height: 8px;
+                width: 6px;
+                height: 6px;
                 border-radius: 50%;
-                background: rgba(255, 255, 255, 0.6);
+                background: rgba(255, 255, 255, 0.7);
                 cursor: pointer;
                 transition: all 0.3s ease;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            }
+
+            .carousel-dot-card:hover {
+                background: rgba(255, 255, 255, 0.9);
             }
 
             .carousel-dot-card.active {
                 background: white;
-                width: 24px;
-                border-radius: 4px;
+                width: 20px;
+                border-radius: 3px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
             }
 
             .image-gallery-thumb {
@@ -1002,6 +1129,24 @@
 
             .modal-carousel {
                 max-width: 260px;
+            }
+
+            .card-carousel {
+                height: 240px;
+            }
+
+            .carousel-dots-card {
+                bottom: 8px;
+                gap: 4px;
+            }
+
+            .carousel-dot-card {
+                width: 5px;
+                height: 5px;
+            }
+
+            .carousel-dot-card.active {
+                width: 16px;
             }
         }
 
@@ -1810,6 +1955,10 @@
             return labels[category] || category;
         }
 
+        function createSlug(name) {
+            return name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+        }
+
         let modalCurrentSlide = 0;
 
         function modalGoToSlide(index) {
@@ -1904,12 +2053,26 @@
             card.dataset.leaderLinkedIn = leader.linkedIn || '';
 
             card.innerHTML = `
-                <div class="card-image-container">
-                    <div class="book-mockup-card">
-                        <img src="${mockupPath}${leader.name} - Angled Mockup.jpg" alt="${leader.name}" class="card-image">
+                <!-- Auto-Rotating Carousel (replaces static mockup) -->
+                <div class="card-carousel-top">
+                    <button class="carousel-nav-btn carousel-prev-btn" title="Previous image">‹</button>
+                    <div class="carousel-slide-card active">
+                        <img src="${mockupPath}${leader.name} - Angled Mockup.jpg" alt="Mockup" onerror="this.parentElement.style.background='#f0f0f0'; this.style.display='none';">
                     </div>
-                    <span class="card-tier-badge">${getCategoryLabel(leader.category)}</span>
+                    <div class="carousel-slide-card">
+                        <img src="${tierPath}${leader.name} - Cover.jpg" alt="Book Cover" onerror="this.parentElement.style.background='#f0f0f0'; this.style.display='none';">
+                    </div>
+                    <div class="carousel-slide-card">
+                        <img src="${tierPath}${firstName} - Foreword.jpg" alt="Foreword" onerror="this.parentElement.style.background='#f0f0f0'; this.style.display='none';">
+                    </div>
+                    <button class="carousel-nav-btn carousel-next-btn" title="Next image">›</button>
+                    <div class="carousel-dots-card">
+                        <span class="carousel-dot-card active" data-index="0"></span>
+                        <span class="carousel-dot-card" data-index="1"></span>
+                        <span class="carousel-dot-card" data-index="2"></span>
+                    </div>
                 </div>
+                <span class="card-tier-badge">${getCategoryLabel(leader.category)}</span>
                 <div class="card-content">
                     <div class="card-name">${escapeHtml(leader.name)}</div>
                     <div class="card-company">${escapeHtml(leader.company)}</div>
@@ -1917,23 +2080,6 @@
                     <div class="card-rep"><strong>Rep:</strong> ${escapeHtml(leader.rep || 'Unassigned')}</div>
 
                     <!-- Mobile Images Gallery -->
-                    <!-- Mobile Auto-Rotating Carousel (3 images) -->
-                    <div class="card-carousel">
-                        <div class="carousel-slide-card active">
-                            <img src="${mockupPath}${leader.name} - Angled Mockup.jpg" alt="Mockup">
-                        </div>
-                        <div class="carousel-slide-card">
-                            <img src="${tierPath}${leader.name} - Cover.jpg" alt="Book Cover">
-                        </div>
-                        <div class="carousel-slide-card">
-                            <img src="${tierPath}${firstName} - Foreword.jpg" alt="Foreword" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22%3E%3C/svg%3E'">
-                        </div>
-                        <div class="carousel-dots-card">
-                            <span class="carousel-dot-card active" data-index="0"></span>
-                            <span class="carousel-dot-card" data-index="1"></span>
-                            <span class="carousel-dot-card" data-index="2"></span>
-                        </div>
-                    </div>
 
                     <div class="card-quick-actions">
                         <button class="quick-action-btn download-btn" title="Download book cover">
@@ -1968,47 +2114,56 @@
             `;
 
             // Add event listeners after creating the card
-            const imageContainer = card.querySelector('.card-image-container');
+            const carouselTop = card.querySelector('.card-carousel-top');
             const copyBtn = card.querySelector('.copy-btn');
             const downloadBtn = card.querySelector('.download-btn');
-            const carousel = card.querySelector('.card-carousel');
             const slides = card.querySelectorAll('.carousel-slide-card');
             const dots = card.querySelectorAll('.carousel-dot-card');
+            const prevBtn = card.querySelector('.carousel-prev-btn');
+            const nextBtn = card.querySelector('.carousel-next-btn');
 
-            imageContainer.addEventListener('click', () => openLeaderModal(leader));
+            carouselTop.addEventListener('click', (e) => {
+                // Don't open modal if clicking buttons
+                if (e.target !== prevBtn && e.target !== nextBtn && !e.target.closest('.carousel-nav-btn')) {
+                    openLeaderModal(leader);
+                }
+            });
             copyBtn.addEventListener('click', () => copyOutreachTemplate(leader));
             downloadBtn.addEventListener('click', () => downloadCover(leader));
 
-            // Show carousel on mobile only
-            if (window.innerWidth <= 768) {
-                carousel.style.display = 'block';
+            // Auto-rotate carousel every 3 seconds (desktop & mobile)
+            let currentSlide = 0;
+            const rotateCarousel = () => {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
 
-                // Auto-rotate carousel every 3 seconds
-                let currentSlide = 0;
-                const rotateCarousel = () => {
-                    slides.forEach(slide => slide.classList.remove('active'));
-                    dots.forEach(dot => dot.classList.remove('active'));
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
 
-                    slides[currentSlide].classList.add('active');
-                    dots[currentSlide].classList.add('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+            };
 
-                    currentSlide = (currentSlide + 1) % slides.length;
-                };
+            // Auto-rotation disabled - only manual navigation with arrows
+            let carouselInterval = null;
 
-                // Rotate every 3 seconds
-                const carouselInterval = setInterval(rotateCarousel, 3000);
-
-                // Dot click handlers
-                dots.forEach(dot => {
-                    dot.addEventListener('click', () => {
-                        clearInterval(carouselInterval);
-                        currentSlide = parseInt(dot.dataset.index);
-                        rotateCarousel();
-                        // Resume auto-rotation
-                        setInterval(rotateCarousel, 3000);
-                    });
+            // Dot click handlers
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    currentSlide = parseInt(dot.dataset.index);
+                    rotateCarousel();
                 });
-            }
+            });
+
+            // Navigation button handlers
+            prevBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                rotateCarousel();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                rotateCarousel();
+            });
 
             return card;
         }
