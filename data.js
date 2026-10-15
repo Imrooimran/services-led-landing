@@ -13,7 +13,7 @@ const leadersData = [
     { name: 'Marc Winans', category: 'tsia1', company: 'Hitachi Vantara', title: 'Director Global Services Delivery Enablement', linkedIn: 'https://linkedin.com/in/marc-winans-9a72941', rep: 'Matt Lyman' },
     { name: 'Mayowa Ige', category: 'tsia1', company: 'OneTrust', title: 'VP, delivery Services', linkedIn: 'https://linkedin.com/in/mayowa-ige-12060860', rep: 'Matt Lyman' },
     { name: 'Monique Rupert', category: 'tsia1', company: 'Blue Yonder', title: 'Global SVP Professional Services', linkedIn: 'https://www.linkedin.com/in/moniquerupert', rep: 'Gil Ramirez' },
-    { name: 'Nicholas Blades', category: 'tsia1', company: 'OneStream Software', title: 'SVP, Consulting Services', linkedIn: 'https://www.linkedin.com/in/nick-blades-a4a29aa', rep: 'Andy Cagle' },
+    { name: 'Nick Blades', category: 'tsia1', company: 'OneStream Software', title: 'SVP, Consulting Services', linkedIn: 'https://www.linkedin.com/in/nick-blades-a4a29aa', rep: 'Andy Cagle' },
     { name: 'Paul Yaros', category: 'tsia1', company: 'Anaqua', title: 'Chief Customer Officer', linkedIn: 'https://www.linkedin.com/in/paulyaros', rep: 'Anders Capener' },
     { name: 'Robert DelPonte', category: 'tsia1', company: 'UKG', title: 'EVP, Chief Customer Experience Officer', linkedIn: 'https://www.linkedin.com/in/bob-delponte-1b6704/', rep: 'Matt Lyman' },
     { name: 'Sebastien Gagne', category: 'tsia1', company: 'Coveo', title: 'Senior Director, Professional Services', linkedIn: 'https://www.linkedin.com/in/gagnesebastien', rep: 'Sarah Warner' },
